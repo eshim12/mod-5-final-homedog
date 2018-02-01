@@ -19,5 +19,6 @@ export const loginUser = (username, password, history) => dispatch => {
 
 export const logoutUser = () => {
   localStorage.removeItem('token');
+  window.location.href = window.location.origin + "/"
   return { type: 'LOGOUT_USER' };
 };

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131230309) do
+ActiveRecord::Schema.define(version: 20180201191006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20180131230309) do
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "pet_owner_id"
+    t.integer "pet_owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.string "host_id"
-    t.string "pet_owner_id"
+    t.integer "host_id"
+    t.integer "pet_owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "start_date"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180131230309) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "reservation_id"
+    t.integer "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "content"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180131230309) do
     t.string "full_name"
     t.string "email"
     t.boolean "is_host", default: true
-    t.string "password"
+    t.string "password_digest"
     t.string "img_file_name"
     t.string "img_content_type"
     t.integer "img_file_size"

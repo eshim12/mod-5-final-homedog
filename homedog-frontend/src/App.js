@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './components/Login';
-// import Profile from './Profile';
+import Homepage from './components/Homepage'
+import NavBar from './components/NavBar'
 import * as actions from './actions';
 
 class App extends Component {
@@ -10,23 +11,8 @@ class App extends Component {
     console.log(this.props.loggedIn);
     return (
       <div className="App">
-        <h2>Homedog</h2>
-        <ul>
-          <dl>
-            {this.props.loggedIn ? (
-              <a
-                onClick={e => {
-                  e.preventDefault();
-                  this.props.logoutUser();
-                }}
-              >
-                Sign Out
-              </a>
-            ) : (
-              <Link to="/login">Go to Login</Link>
-            )}
-          </dl>
-        </ul>
+        <NavBar />
+        
         <Switch>
           <Route path="/login" component={Login} />
           {/*<Route path="/profile" component={Profile} />*/}
