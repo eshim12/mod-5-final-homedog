@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host_id: MyString
+  pet_owner_id: MyString
+  review_id: MyString
+
+two:
+  host_id: MyString
+  pet_owner_id: MyString
+  review_id: MyString
