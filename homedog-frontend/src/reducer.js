@@ -23,12 +23,21 @@ const allUsersReducer = (state = [], action) => {
     default:
       return state
   }
+};
 
+const allReservationsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_ALL_RESERVATIONS':
+      return action.reservations
+    default:
+      return state
+  }
 }
 
 const rootReducer = combineReducers({
   auth: authReducer,
   users: allUsersReducer,
+  reservations: allReservationsReducer
 })
 
 export default rootReducer

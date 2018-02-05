@@ -2,8 +2,6 @@ import React from 'react';
 import withAuth from './hocs/withAuth'
 import * as actions from '../actions'
 import { connect } from 'react-redux'
-import VerticalNavBar from './VerticalNavBar'
-import { adapter } from '../services';
 
 
 class Profile extends React.Component {
@@ -13,6 +11,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllUsers();
+    this.props.fetchAllReservations();
   }
 
   render() {
@@ -27,7 +26,6 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <VerticalNavBar />
         <div className="Profile">
           {me? `Welcome ${me.full_name}` : "loading"}!
 

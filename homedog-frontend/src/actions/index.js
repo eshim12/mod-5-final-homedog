@@ -47,3 +47,12 @@ export const logoutUser = () => {
   localStorage.removeItem('token');
   return { type: 'LOGOUT_USER' };
 };
+
+export const fetchAllReservations = () => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.reservations()
+    .then(reservations => {dispatch({
+      type: 'GET_ALL_RESERVATIONS', reservations
+    })
+  })
+}

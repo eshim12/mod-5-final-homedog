@@ -16,6 +16,7 @@ class VerticalNavBar extends Component {
 
     return (
       <div className="ui secondary fixed left vertical menu" style={vertStyle}>
+        <NavLink className="item" to="/profile">My Profile</NavLink>
         <NavLink className="item" to="/search">Find Sitter</NavLink>
         <NavLink className="item" to="/myhostprof">My Host Page</NavLink>
         <NavLink className="item" to="/mydogprof">My Dog Page</NavLink>

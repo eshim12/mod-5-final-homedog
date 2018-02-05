@@ -1,4 +1,5 @@
 class Api::V1::PetsController < ApplicationController
+  skip_before_action :authorized, only: [:index, :create]
   def index
   pets = Pet.all
   render json: pets, status: 200

@@ -38,11 +38,17 @@ const login = data => {
   }).then(res => res.json());
 };
 
+const fetchAllReservations = () => {
+  return fetch(`${API_ROOT}/reservations`)
+    .then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
     getCurrentUser,
     addUser,
     getAllUsers
-  }
+  },
+  reservations: fetchAllReservations
 };

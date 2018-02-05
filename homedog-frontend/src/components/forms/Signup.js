@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 
 class Signup extends Component{
   constructor() {
@@ -15,7 +15,8 @@ class Signup extends Component{
         full_name: "",
         password: "",
         is_host: true,
-        description: ""
+        description: "",
+        address: ""
       },
       imagePreviewUrl: ""
     }
@@ -64,6 +65,7 @@ class Signup extends Component{
         // value={fields.username}
         onChange={this.handleChange}
       />
+    <input type="text" name="address" placeholder="address" onChange={this.handleChange}/>
     </div> : ""
 
     return(

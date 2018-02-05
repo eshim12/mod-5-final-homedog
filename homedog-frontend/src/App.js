@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Login from './components/Login';
+import Login from './components/forms/Login';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
-import Signup from './components/Signup';
-import FindSitter from './components/FindSitter';
+import Signup from './components/forms/Signup';
+import FindSitter from './components/forms/FindSitter';
 import MyHostPage from './components/MyHostPage';
 import MyDogPage from './components/MyDogPage'
 import * as actions from './actions';
+import VerticalNavBar from './components/VerticalNavBar'
 
 class App extends Component {
   render() {
-    console.log(this.props.loggedIn);
+    console.log("app page", this.props.loggedIn);
     return (
       <div className="App">
+        {this.props.loggedIn ? <VerticalNavBar /> : null}
         <div><NavBar /></div>
-
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />

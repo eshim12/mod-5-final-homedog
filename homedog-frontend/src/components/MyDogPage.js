@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import * as actions from '../actions'
+import { connect } from 'react-redux'
 
 class MyDogPage extends Component {
   constructor() {
@@ -6,10 +8,20 @@ class MyDogPage extends Component {
   }
 
   render() {
+    const {loggedIn} = this.props
+    console.log("dog page", loggedIn);
     return (
-      <div>My Dog Page</div>
+      <div className="Profile">
+      {loggedIn ?  "My Dog Page" : null}
+      </div>
+
     )
   }
 }
 
-export default MyDogPage
+const mapStateToProps = ({auth, users}) => (
+  {loggedIn: !!auth.currentUser.id,
+  currentUser: auth.currentUser,
+  allUsers: users
+});
+export default connect(mapStateToProps, actions)(MyDogPage)
