@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './components/Login';
-// import Homepage from './components/Homepage'
-import NavBar from './components/NavBar'
+import Profile from './components/Profile';
+import NavBar from './components/NavBar';
+import Signup from './components/Signup';
+import FindSitter from './components/FindSitter';
+import MyHostPage from './components/MyHostPage';
+import MyDogPage from './components/MyDogPage'
 import * as actions from './actions';
 
 class App extends Component {
@@ -15,6 +19,11 @@ class App extends Component {
 
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/search" component={FindSitter} />
+          <Route path="/myhostprof" component={MyHostPage} />
+          <Route path="/mydogprof" component={MyDogPage} />
         </Switch>
       </div>
     );

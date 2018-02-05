@@ -29,6 +29,7 @@ class Login extends React.Component {
 
   render() {
     const { fields } = this.state;
+    console.log(this.state);
     return (
       <div>
         {this.state.error ? <h1>Try Again</h1> : null}

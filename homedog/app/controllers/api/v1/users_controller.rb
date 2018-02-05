@@ -7,8 +7,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    render json: user, status: 201
+    user = User.new(user_params)
+    if user.save
+      token = issue_token(user)
+      render json: {id: user.id, username: user.username, jwt: token}, status: 201
+    end
   end
 
   def update
@@ -28,7 +31,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:username, :full_name, :email, :password, :is_host)
+    params.permit(:username, :full_name, :email, :password, :is_host, :img, :description)
   end
 
   def set_user

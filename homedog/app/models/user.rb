@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
-  # has_attached_file :img, styles { small: "64x64", med: "100x100", large: "200x200" }
-  # validates_attachment_content_type :img, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  # validates_attachment :img,
+  # content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  # validates :img, attachment_presence: true
+  # has_attached_file :img, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   # As Host
   has_many :host_reservations, :class_name => "Reservation", :foreign_key => "host_id"
