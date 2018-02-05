@@ -42,6 +42,7 @@ export const adapter = {
   auth: {
     login,
     getCurrentUser,
-    addUser
+    addUser,
+    getAllUsers
   }
 };

@@ -23,6 +23,16 @@ export const loginUser = (username, password, history) => dispatch => {
   });
 };
 
+export const fetchAllUsers = () => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.auth.getAllUsers()
+    .then(users => {
+      dispatch({
+        type: 'GET_ALL_USERS', users
+      })
+    })
+}
+
 export const loginNewUser = (data, history) => dispatch => {
   dispatch({ type: 'ASYNC_START' });
   adapter.auth.addUser(data).then(user => {
