@@ -1,8 +1,8 @@
 # users
-elli = User.create(username: "elli", full_name: "elli shim", password: "123", description: "a good host and good with dogs")
-sue = User.create(username: "sue", full_name: "sue shim", password: "123", description: "a good host and good with dogs")
-jay = User.create(username: "jay", full_name: "jay shim", password: "123", description: "a good host and good with dogs")
-cora = User.create(username: "cora", full_name: "cora shim", password: "123", description: "a good host and good with dogs")
+elli = User.create(username: "elli", full_name: "elli shim", password: "123", email: "ellishim@gmail.com", description: "a good host and good with dogs")
+sue = User.create(username: "sue", full_name: "sue shim", password: "123", email: "ellishim@gmail.com", description: "a good host and good with dogs")
+jay = User.create(username: "jay", full_name: "jay shim", password: "123", email: "ellishim@gmail.com", description: "a good host and good with dogs")
+cora = User.create(username: "cora", full_name: "cora shim", password: "123", email: "ellishim@gmail.com", description: "a good host and good with dogs")
 
 # pets
 coco = Pet.create(name: "coco", pet_owner: elli, description: "great dog")

@@ -13,6 +13,7 @@ class Signup extends Component{
         img_file_name: "",
         username: "",
         full_name: "",
+        email: '',
         password: "",
         is_host: true,
         description: "",
@@ -65,11 +66,12 @@ class Signup extends Component{
         // value={fields.username}
         onChange={this.handleChange}
       />
+    <label>Address</label>
     <input type="text" name="address" placeholder="address" onChange={this.handleChange}/>
     </div> : ""
 
     return(
-      <div className="ui form">
+      <div className="ui form signup">
         <form onSubmit={this.handleSubmit}>
           <h2><center>Sign Up</center></h2>
           <input onChange={this.handleCheckbox} type="checkbox" id="notHost" name="is_host" value="notHost"/>
@@ -94,6 +96,16 @@ class Signup extends Component{
               name="full_name"
               placeholder="full name"
               // value={fields.full_name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="ui field">
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="example@example.com"
+              // value={fields.username}
               onChange={this.handleChange}
             />
           </div>

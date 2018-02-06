@@ -1,9 +1,31 @@
 body {
   margin: 0;
-  padding-top: 80px;
-  font-family: sans-serif;
+  padding-top: 100px;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.headerImg {
+  width: 20px;
 }
 
 .Profile {
   padding-left: 250px;
+}
+
+.pet {
+  width: 25%;
+}
+
+.login {
+  width: 30%;
+  margin: auto;
+}
+
+.signup {
+  width: 30%;
+  margin: auto;
 }

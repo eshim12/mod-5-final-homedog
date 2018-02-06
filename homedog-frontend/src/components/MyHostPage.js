@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import * as actions from '../actions'
 import { connect } from 'react-redux'
+import withAuth from './hocs/withAuth'
+import ReservationCard from './detailCards/ReservationCard'
 
 class MyHostPage extends Component {
   constructor() {
     super()
+  }
+
+  componentDidMount() {
+    this.props.fetchAllUsers();
+    this.props.fetchAllReservations();
   }
 
   render() {
@@ -21,7 +28,7 @@ class MyHostPage extends Component {
             <h1>My Host Profile</h1>
             <p>My Address: {me.address}</p>
             <p>Description: {me.description}</p>
-            <ul>My Bookings {me.host_reservations.map((rsr, i) => <dl key={i}>reservations</dl>)}</ul>
+            <p>Im Dog-Sitting These Days:</p> {me.host_reservations.map((rsr, i) => <ReservationCard key={i} reservation={rsr}/>)}
           </div>
           : <div><p>"you are not a host"</p> <button className="ui basic green button">Update your Host Profile</button></div>
         : null}
@@ -35,4 +42,4 @@ const mapStateToProps = ({auth, users}) => (
   currentUser: auth.currentUser,
   allUsers: users
 });
-export default connect(mapStateToProps, actions)(MyHostPage)
+export default withAuth(connect(mapStateToProps, actions)(MyHostPage))

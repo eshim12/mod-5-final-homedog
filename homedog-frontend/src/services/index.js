@@ -43,6 +43,22 @@ const fetchAllReservations = () => {
     .then(res => res.json())
 }
 
+const addReservation = (data) => {
+  return fetch(`${API_ROOT}/reservations`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
+const addPet = (data) => {
+  return fetch(`${API_ROOT}/pets`,{
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -50,5 +66,11 @@ export const adapter = {
     addUser,
     getAllUsers
   },
-  reservations: fetchAllReservations
+  reservations: {
+    fetchAllReservations,
+    addReservation
+  },
+  pets: {
+    addPet
+  }
 };

@@ -50,9 +50,26 @@ export const logoutUser = () => {
 
 export const fetchAllReservations = () => dispatch => {
   dispatch({ type: 'ASYNC_START' });
-  adapter.reservations()
+  adapter.reservations.fetchAllReservations()
     .then(reservations => {dispatch({
       type: 'GET_ALL_RESERVATIONS', reservations
     })
   })
+};
+
+export const addReservation = (data, history) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.reservations.addReservation(data)
+    .then(reservation => {
+      dispatch({ type: 'ADD_RESERVATION', reservation })
+      history.push('/profile')
+  });
+};
+
+export const addPet = (data, history) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.pets.addPet(data)
+    .then(pet => dispatch({ type: 'ADD_PET', pet })
+  )
+  history.push('/mydogprof')
 }

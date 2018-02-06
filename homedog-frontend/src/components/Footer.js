@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import Homepage from './Homepage'
 import * as actions from '../actions';
 
-class NavBar extends Component {
+class Footer extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,7 @@ class NavBar extends Component {
 
 
     return (
-      <div className="ui fixed top menu">
+      <div className="ui bottom menu">
         <h1 className="header item">
           <div>Homed</div>
           <div><img src={require('../images/paw-p.jpg')}/></div>
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
   loggedIn: !!state.auth.currentUser.id,
   currentUser: state.auth.currentUser
 });
-export default connect(mapStateToProps, actions)(NavBar)
+export default connect(mapStateToProps, actions)(Footer)

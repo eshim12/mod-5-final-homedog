@@ -29,6 +29,17 @@ const allReservationsReducer = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_RESERVATIONS':
       return action.reservations
+    case 'ADD_RESERVATION':
+      return [...state, action.user]
+    default:
+      return state
+  }
+}
+
+const petsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_PET':
+      return [...state, action.pet]
     default:
       return state
   }
@@ -37,7 +48,8 @@ const allReservationsReducer = (state = [], action) => {
 const rootReducer = combineReducers({
   auth: authReducer,
   users: allUsersReducer,
-  reservations: allReservationsReducer
+  reservations: allReservationsReducer,
+  pets: petsReducer
 })
 
 export default rootReducer

@@ -11,7 +11,7 @@ class VerticalNavBar extends Component {
   }
   render() {
     const vertStyle = {
-      'padding-top': '80px'
+      'padding-top': '95px'
     }
 
     return (
