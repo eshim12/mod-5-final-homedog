@@ -1,5 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :create]
+  skip_before_action :authorized, only: [:index, :create, :show]
   def index
   reservations = Reservation.all
   render json: reservations, status: 200
@@ -16,12 +16,17 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    reservationId = @reservation.id
-    @reservation.destroy
-    render json: {message:"Zap! reservation deleted", reservationId:reservationId}
+    # byebug
+    reservation = Reservation.find(params[:id])
+    if reservation.destroy
+      render json: {message:"Zap! reservation deleted", id: reservation.id, pet_owner_id: reservation.pet_owner_id, host_id: reservation.host_id }
+    else
+      render json: {error: "DID NOT DELETE"}, status: 400
+    end
   end
 
   def show
+    @reservation = Reservation.find(params[:id])
     render json: @reservation, status: 200
   end
 

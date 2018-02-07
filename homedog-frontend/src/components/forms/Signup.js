@@ -10,7 +10,7 @@ class Signup extends Component{
     this.state = {
       error: false,
       fields: {
-        img_file_name: "",
+        blob: "",
         username: "",
         full_name: "",
         email: '',
@@ -19,7 +19,8 @@ class Signup extends Component{
         description: "",
         address: ""
       },
-      imagePreviewUrl: ""
+      imagePreviewUrl: "",
+      img_file_name: ''
     }
   }
 
@@ -27,14 +28,20 @@ class Signup extends Component{
     console.log(e.target.files[0]);
     let reader = new FileReader();
     let file = e.target.files[0];
-    const newFields = { ...this.state.fields, img_file_name: file };
     reader.onloadend = () => {
       this.setState({
-        fields: newFields,
+        img_file_name: file,
         imagePreviewUrl: reader.result
+      }, () => {
+        const imgTag = document.getElementById('profilePic')
+        const newFields = { ...this.state.fields, blob: imgTag.src };
+        this.setState({
+          fields: newFields
+        })
       });
     }
     reader.readAsDataURL(file)
+
   };
 
   handleChange = (e) => {
@@ -55,8 +62,10 @@ class Signup extends Component{
   };
 
   render() {
+    console.log("do i have a blob", this.state.fields.blob);
     let me;
-    this.state.imagePreviewUrl ? me = <img src={this.state.imagePreviewUrl}/> : "NO IMAGE"
+    this.state.imagePreviewUrl ? me = <img style={{width:"100px", "border-style": "solid"}}
+      id="profilePic" src={this.state.imagePreviewUrl}/> : "NO IMAGE"
     let yesHost;
     this.state.fields.is_host ? yesHost = <div className="ui field">
       <label>Description</label>
@@ -73,7 +82,7 @@ class Signup extends Component{
     return(
       <div className="ui form signup">
         <form onSubmit={this.handleSubmit}>
-          <h2><center>Sign Up</center></h2>
+          <h2 style={{"font-family": "Nunito, sans-serif"}}><center>Sign Up</center></h2>
           <input onChange={this.handleCheckbox} type="checkbox" id="notHost" name="is_host" value="notHost"/>
           <label htmlFor="notHost">Not a Host</label>
           {/* IMAGE UPLOAD*/}
@@ -81,6 +90,7 @@ class Signup extends Component{
             <label>Upload Profile Pic</label>
             <input type="file" name="img" id="img" accept="image/*" onChange={this.handleFileChange}/>
           </div>
+          {me}
           <div className="ui field">
             <label>Username</label>
             <input
@@ -122,7 +132,6 @@ class Signup extends Component{
           {yesHost}
           <button type="submit" className="ui basic green button">Submit</button>
         </form>
-        {me}
       </div>
     )
   }

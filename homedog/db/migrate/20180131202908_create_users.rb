@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.boolean :is_host, default: true
       t.string :password
-      t.attachment :img
+      t.string :blob
 
       t.timestamps
     end

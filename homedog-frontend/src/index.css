@@ -1,21 +1,46 @@
 body {
   margin: 0;
-  padding-top: 100px;
-  font-family: 'Lato', sans-serif;
+  padding-top: 70px;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1 {
   font-family: 'Julius Sans One', sans-serif;
 }
 
-.headerImg {
-  width: 20px;
+.ui.fixed.top.menu {
+  height: 50px;
+  border-style: none;
 }
 
+.navBar {
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.intro {
+  /*background: rgba(66,134,244, 0.6);*/
+  width: 50%;
+  margin: auto;
+  border-radius: 25px;
+}
+
+.introText {
+  border-radius: 25px;
+  font-family: 'Nunito', sans-serif;
+}
+
+/*Profile Page*/
 .Profile {
   padding-left: 250px;
 }
 
+/*Find Sitter Page*/
+
+.ui.form.sitter {
+  width: 50%;
+}
+
+/**/
 .pet {
   width: 25%;
 }

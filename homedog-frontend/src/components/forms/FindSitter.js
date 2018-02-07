@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../../actions'
 import { connect } from 'react-redux'
+import DatePicker from 'react-datepicker'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
 
@@ -57,7 +58,7 @@ class FindSitter extends Component {
   }
 
   render() {
-    console.log("sitter page", this.props.loggedIn);
+    console.log("sitter page", this.state);
     console.log("sitter page all reservations", this.props.allReservations);
     const {start_date, end_date, results} = this.state
     let available;
@@ -70,14 +71,14 @@ class FindSitter extends Component {
 
       <div className="Profile">
         <h1>Search for a Sitter</h1>
-        <form>
+        <form className="ui form sitter">
           <label>Start Date</label>
           <input onChange={this.handleChange} name="start_date" type="date"/>
           <label>End Date</label>
           <input onChange={this.handleChange} name="end_date" type="date"/>
         </form>
         <br/>
-        <div className="ui three cards">
+        <div className="ui two column grid">
           {available ?  available.map((user,i) =>
               <HostCard
               start_date={start_date}

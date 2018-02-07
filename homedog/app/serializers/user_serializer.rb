@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :full_name, :username, :email, :password_digest, :is_host, :description, :address
+  attributes :id, :full_name, :username, :email, :password_digest, :is_host, :description, :address, :blob
   # , :img THIS KEEPS GIVING ME AN ERROR PUT IN CONTROLLER AS WELL LATER
 
   # As Host

@@ -1,5 +1,6 @@
 import React from 'react'
 import SitterPopup from '../SitterPopup'
+import ReviewsPopup from '../ReviewsPopup'
 
 class HostCard extends React.Component {
   constructor() {
@@ -42,12 +43,16 @@ class HostCard extends React.Component {
             confirmSitter={confirmSitter}
             start_date={start_date}
             end_date={end_date}/>
-
+          <ReviewsPopup user={user}/>
         </div>
       </div> :
       <div onClick={this.handleClick} key={index} className="ui card">
-        {user.full_name}
-        <div className="ui star rating" data-rating="4"></div>
+        <div className="image">
+          <img src={user.blob} />
+        </div>
+        <div className="content">
+          <h3>{user.full_name}</h3>
+        </div>
       </div>}</div>
     )
   }

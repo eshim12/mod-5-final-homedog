@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205202527) do
+ActiveRecord::Schema.define(version: 20180207210145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180205202527) do
     t.integer "pet_owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -45,10 +46,7 @@ ActiveRecord::Schema.define(version: 20180205202527) do
     t.string "email"
     t.boolean "is_host", default: true
     t.string "password_digest"
-    t.string "img_file_name"
-    t.string "img_content_type"
-    t.integer "img_file_size"
-    t.datetime "img_updated_at"
+    t.string "blob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"

@@ -51,6 +51,22 @@ const addReservation = (data) => {
   }).then(res => res.json())
 }
 
+const deleteReservation = (id) => {
+  const token = localStorage.getItem('token');
+  return fetch(`${API_ROOT}/reservations/${id}`, {
+    method: 'DELETE',
+    headers: {headers, "Authorization": token}
+  }).then(res => res.json())
+}
+
+const addReview = (data) => {
+  fetch(`${API_ROOT}/reviews`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 const addPet = (data) => {
   return fetch(`${API_ROOT}/pets`,{
     method: 'POST',
@@ -68,9 +84,13 @@ export const adapter = {
   },
   reservations: {
     fetchAllReservations,
-    addReservation
+    addReservation,
+    deleteReservation
   },
   pets: {
     addPet
+  },
+  reviews: {
+    addReview
   }
 };

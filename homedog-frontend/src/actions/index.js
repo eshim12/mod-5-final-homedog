@@ -73,3 +73,22 @@ export const addPet = (data, history) => dispatch => {
   )
   history.push('/mydogprof')
 }
+
+export const deleteReservation = (id, history) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.reservations.deleteReservation(id)
+    .then(reservation => {
+      dispatch({ type: 'DELETE_RESERVATION', reservation })
+    });
+  alert("Deleted!")
+  history.push('/profile')
+}
+
+export const addReview = (data) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.reviews.addReview(data)
+    .then(review => {
+      dispatch({ type: 'ADD_REVIEW', review })
+  });
+  alert("Review added! Thanks!")
+}

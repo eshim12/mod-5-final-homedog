@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../actions';
 
 class Login extends React.Component {
@@ -35,7 +35,7 @@ class Login extends React.Component {
         {this.state.error ? <h1>Try Again</h1> : null}
         <div className="ui form login">
           <form onSubmit={this.handleSubmit}>
-            <h2>Sign in</h2>
+            <h2 style={{'font-family':'Nunito, sans-serif'}}>Sign in</h2>
             <div className="ui field">
               <label>Username</label>
               <input
@@ -59,6 +59,10 @@ class Login extends React.Component {
               Login
             </button>
           </form>
+          <p>New user? <NavLink
+            to="/signup">
+              Sign Up!
+            </NavLink></p>
         </div>
       </div>
     );

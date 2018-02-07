@@ -15,36 +15,28 @@ class NavBar extends Component {
 
 
     return (
-      <div className="ui fixed top menu">
-        <h1 className="header item">
+      <div className="ui fixed top menu borderless">
+        <h1 p style={{"font-size": "25px"}} className="header item navBar">
           <div>Homed</div>
           <div><img src={require('../images/paw-p.jpg')}/></div>
           <div>g</div>
         </h1>
-          <NavLink className="item" to="/">Home</NavLink>
+          <NavLink className="item" to="/homepage"><h4 className="navBar">Home</h4></NavLink>
+
+        { this.props.loggedIn ? (<div className="item"><p style={{"font-size": "15px"}} className="navBar">Welcome {this.props.currentUser.username}!</p></div> ) : null}
+
           { this.props.loggedIn ? (
             <a
-              className="item"
+              className="right item"
             onClick={e => {
               e.preventDefault();
               this.props.logoutUser();
-            }}>Sign Out</a> ) : (
-            <div className="item">
+            }}><h4 className="navBar">Sign Out</h4></a> ) : (
+            <div className="right item">
               <NavLink to="/login">
-                  Go to Login
+                  <h4 className="navBar">Login</h4>
               </NavLink>
             </div>) }
-
-          { !this.props.loggedIn ? (
-            <div className="right item">
-              <NavLink
-                to="/signup">
-                  Sign Up!
-                </NavLink>
-              </div>
-          ) : null }
-
-          { this.props.loggedIn ? (<div className="right header item">Welcome {this.props.currentUser.username}!</div> ) : null}
       </div>
     )
   }

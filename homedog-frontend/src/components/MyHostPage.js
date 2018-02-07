@@ -28,7 +28,10 @@ class MyHostPage extends Component {
             <h1>My Host Profile</h1>
             <p>My Address: {me.address}</p>
             <p>Description: {me.description}</p>
-            <p>Im Dog-Sitting These Days:</p> {me.host_reservations.map((rsr, i) => <ReservationCard key={i} reservation={rsr}/>)}
+            <p>Im Dog-Sitting These Days:</p>
+            {me.host_reservations.length === 0 ? "You are not dog-sitting!" : null} 
+            {me.host_reservations.map((rsr, i) => <ReservationCard key={i} reservation={rsr}/>)}
+            <button className="ui basic green button">Update your Host Profile</button>
           </div>
           : <div><p>"you are not a host"</p> <button className="ui basic green button">Update your Host Profile</button></div>
         : null}
