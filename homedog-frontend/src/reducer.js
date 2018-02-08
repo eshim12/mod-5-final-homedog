@@ -25,14 +25,15 @@ const allUsersReducer = (state = [], action) => {
       const allUsers = state.filter(x=> x.id !== user.id)
       const userUpdate = user.owner_reservations.filter(x => x.id !== action.reservation.id)
       user.owner_reservations = userUpdate
-
       return [...allUsers, user]
     case 'ADD_PET':
-      // debugger
       const x = state.find(x => x.id === action.pet.pet_owner.id)
       x.pets.push(action.pet)
       const xs = state.filter(x=> x.id !== x.id)
       return [...xs, x]
+    case 'UPDATE_USER':
+      const xes = state.filter(x => x.id!== action.user.id)
+      return [...xes, action.user]
     default:
       return state
   }

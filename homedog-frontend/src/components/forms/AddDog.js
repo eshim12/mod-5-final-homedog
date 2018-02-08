@@ -50,6 +50,7 @@ class AddDog extends React.Component {
       name: "",
       description: ""
     })
+    this.props.handleClose()
   }
 
   render(){

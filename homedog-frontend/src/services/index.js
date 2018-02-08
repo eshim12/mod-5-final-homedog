@@ -30,6 +30,14 @@ const getAllUsers = () => {
     .then(res => res.json())
 }
 
+const updateUser = (id, data) => {
+  return fetch(`${API_ROOT}/users/${id}`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 const login = data => {
   return fetch(`${API_ROOT}/login/`, {
     method: 'POST',
@@ -80,7 +88,8 @@ export const adapter = {
     login,
     getCurrentUser,
     addUser,
-    getAllUsers
+    getAllUsers,
+    updateUser
   },
   reservations: {
     fetchAllReservations,

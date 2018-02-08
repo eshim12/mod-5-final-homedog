@@ -92,3 +92,11 @@ export const addReview = (data) => dispatch => {
   });
   alert("Review added! Thanks!")
 }
+
+export const updateUser = (id, data) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.auth.updateUser(id, data)
+    .then(user => {
+      dispatch({ type: 'UPDATE_USER', user })
+    })
+};
