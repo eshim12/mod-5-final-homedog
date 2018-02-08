@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding-top: 70px;
+  padding-top: 75px;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -9,7 +9,7 @@ h1 {
 }
 
 .ui.fixed.top.menu {
-  height: 50px;
+  height: 9%;
   border-style: none;
 }
 
@@ -31,7 +31,7 @@ h1 {
 
 /*Profile Page*/
 .Profile {
-  padding-left: 250px;
+  padding-left: 40%;
 }
 
 /*Find Sitter Page*/
@@ -42,7 +42,7 @@ h1 {
 
 /**/
 .pet {
-  width: 25%;
+  width: 50%;
 }
 
 .login {

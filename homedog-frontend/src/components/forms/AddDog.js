@@ -1,4 +1,7 @@
 import React from 'react';
+import * as actions from '../../actions'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class AddDog extends React.Component {
   constructor() {
@@ -42,7 +45,7 @@ class AddDog extends React.Component {
     e.preventDefault()
     const {name, description, img} = this.state
 
-    this.props.addPet({name, description, img,  pet_owner_id: this.props.me.id})
+    this.props.addPet({name, description, img,  pet_owner_id: this.props.me.id}, this.props.history)
     this.setState({
       name: "",
       description: ""
@@ -51,6 +54,7 @@ class AddDog extends React.Component {
 
   render(){
     console.log("do i have a blob", this.state.img)
+    console.log("add dog me and history??", this.props);
     let me;
     this.state.imagePreviewUrl ? me = <img style={{width:"100px", "border-style": "solid"}}
       id="profilePic" src={this.state.imagePreviewUrl}/> : "NO IMAGE"
@@ -77,4 +81,4 @@ class AddDog extends React.Component {
 }
 
 
-export default AddDog
+export default withRouter(connect(null, actions)(AddDog))

@@ -15,7 +15,7 @@ class NavBar extends Component {
 
 
     return (
-      <div className="ui fixed top menu borderless">
+      <div style={{width: "100%"}} className="ui fixed top menu borderless">
         <h1 p style={{"font-size": "25px"}} className="header item navBar">
           <div>Homed</div>
           <div><img src={require('../images/paw-p.jpg')}/></div>

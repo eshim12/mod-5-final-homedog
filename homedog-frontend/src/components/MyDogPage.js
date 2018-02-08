@@ -3,7 +3,7 @@ import * as actions from '../actions'
 import { connect } from 'react-redux'
 import withAuth from './hocs/withAuth'
 import PetCard from './detailCards/PetCard'
-import AddDog from './forms/AddDog'
+import AddPetModal from './AddPetModal'
 
 class MyDogPage extends Component {
   constructor() {
@@ -44,9 +44,7 @@ class MyDogPage extends Component {
         <div>
           {me.pets.map((pet,i) =>
             <PetCard key={i} pet={pet} />)}
-          <button onClick={this.handleClick} className="ui basic green button">Add a Pet</button>
-          {this.state.btnClicked ? <AddDog me={currentUser}
-          addPet={this.addPet}/> : null}
+          <AddPetModal me={currentUser}/>
         </div>
       : null}
       </div>
