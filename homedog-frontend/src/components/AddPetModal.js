@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Icon } from 'semantic-ui-react'
 import AddDog from './forms/AddDog'
 
 class AddPetModal extends React.Component {
@@ -21,7 +21,9 @@ class AddPetModal extends React.Component {
     const { me } = this.props
     return(
       <Modal
-        trigger={<Button className="ui basic blue button" onClick={this.handleClick}>Add a Dog</Button>}
+        trigger={<Button
+          className="ui basic blue button"
+          size="tiny" onClick={this.handleClick}><Icon name="paw"/><Icon name="plus"/></Button>}
         open={this.state.open}>
         <Modal.Header>Pet Info</Modal.Header>
         <Modal.Content>

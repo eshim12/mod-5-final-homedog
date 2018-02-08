@@ -83,6 +83,14 @@ const addPet = (data) => {
   }).then(res => res.json())
 }
 
+const deletePet = (id) => {
+  const token = localStorage.getItem('token');
+  return fetch(`${API_ROOT}/pets/${id}`, {
+    method: 'DELETE',
+    headers: {headers, "Authorization": token}
+  }).then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -97,7 +105,8 @@ export const adapter = {
     deleteReservation
   },
   pets: {
-    addPet
+    addPet,
+    deletePet
   },
   reviews: {
     addReview

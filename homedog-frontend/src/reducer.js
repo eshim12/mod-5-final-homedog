@@ -31,6 +31,12 @@ const allUsersReducer = (state = [], action) => {
       x.pets.push(action.pet)
       const xs = state.filter(x=> x.id !== x.id)
       return [...xs, x]
+    case 'DELETE_PET':
+      const xxs = state.find(x => x.id === action.pet.pet.pet_owner_id)
+      const pets = xxs.pets.filter(pet => pet.id !== action.pet.pet.id)
+      xxs.pets = pets
+      const xxxs = state.filter(x => x.id !== xxs.id)
+      return [...xxxs, xxs]
     case 'UPDATE_USER':
       const xes = state.filter(x => x.id!== action.user.id)
       return [...xes, action.user]
@@ -57,6 +63,8 @@ const petsReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PET':
       return [...state, action.pet]
+    case 'DELETE_PET':
+      return state
     default:
       return state
   }

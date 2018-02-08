@@ -16,9 +16,12 @@ class Api::V1::PetsController < ApplicationController
   end
 
   def destroy
-    petId = @pet.id
-    @pet.destroy
-    render json: {message:"Zap! pet deleted", petId:petId}
+    pet = Pet.find(params[:id])
+    if pet.destroy
+      render json: {message:"Zap! pet deleted", pet: pet}
+    else
+      render json: {error: "DID NOT DELETE"}, status: 400
+    end
   end
 
   def show
