@@ -14,7 +14,8 @@ class Profile extends React.Component {
     this.state = {
       review: {
         reservation_id: "",
-        content: ""
+        content: "",
+        rating: ''
       }
     }
   }
