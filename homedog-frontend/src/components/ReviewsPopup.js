@@ -13,7 +13,7 @@ const ReviewsPopup = ({user, start_date, end_date, confirmSitter}) => {
         {user.host_reservations.length === 0 ?
           <div>no reviews yet!</div>
         :
-        user.host_reservations.map((rsr, i) => rsr.review ? <ReviewCard user={user} rsr={rsr}/> : null)}
+        user.host_reservations.map((rsr, i) => rsr.review ? <ReviewCard key={i} user={user} rsr={rsr}/> : null)}
 
       </Modal.Description>
     </Modal>

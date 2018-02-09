@@ -1,5 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :create, :show]
+  skip_before_action :authorized, only: [:index, :create, :show, :update]
   def index
   reservations = Reservation.all
   render json: reservations, status: 200
@@ -11,6 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def update
+    @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
     render json: @reservation, status: 200
   end
@@ -32,7 +33,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.permit(:host_id, :pet_owner_id, :start_date, :end_date)
+    params.permit(:host_id, :pet_owner_id, :start_date, :end_date, :has_alert)
   end
 
   def set_reservation

@@ -60,23 +60,27 @@ class AddDog extends React.Component {
     this.state.imagePreviewUrl ? me = <img style={{width:"100px", "border-style": "solid"}}
       id="profilePic" src={this.state.imagePreviewUrl}/> : "NO IMAGE"
     return(
-      <div className="ui form pet">
-        <form onSubmit={this.handleSubmit}>
-          <label>Upload Pet Pic</label>
-          <input type="file" name="img" id="img" accept="image/*" onChange={this.handleFileChange}/>
+      <div className="ui two column grid">
+        <div className="ui form pet column">
+          <form onSubmit={this.handleSubmit}>
+            <label>Upload Pet Pic</label>
+            <input type="file" name="img" id="img" accept="image/*" onChange={this.handleFileChange}/>
+            <input
+              onChange={this.handleChange}
+              placeholder="name"
+              name="name" type='text'/>
+            <textarea
+              onChange={this.handleChange}
+              placeholder="description" name="description" />
+            <button
+              type="submit"
+              className="ui basic green button">Add Dog</button>
+          </form>
+        </div>
+        <div className="column">
           {me}
-          <input
-            onChange={this.handleChange}
-            placeholder="name"
-            name="name" type='text'/>
-          <textarea
-            onChange={this.handleChange}
-            placeholder="description" name="description" />
-          <button
-            type="submit"
-            className="ui basic green button">Add Dog</button>
-        </form>
-      </div>
+        </div>
+    </div>
     )
   }
 }

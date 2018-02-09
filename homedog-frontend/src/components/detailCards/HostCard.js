@@ -28,11 +28,11 @@ class HostCard extends React.Component {
     const {index, user, confirmSitter, start_date, end_date} = this.props
     return (
       <div>{this.state.clicked ?
-      <div key={index} className="ui card">
+      <div style={{width: "250px"}} key={index} className="ui card">
         <a onClick={this.handleClick}>close</a>
         <div className="content">
           <div className="header">About {user.username}</div>
-          <div className="meta">2 days ago</div>
+          <div className="meta">{user.address}</div>
           <div className="description">
             <p>{user.description}</p>
           </div>
@@ -46,7 +46,7 @@ class HostCard extends React.Component {
           <ReviewsPopup user={user}/>
         </div>
       </div> :
-      <div onClick={this.handleClick} key={index} className="ui card">
+      <div style={{width: "150px"}} onClick={this.handleClick} key={index} className="ui card">
         <div className="image">
           <img src={user.blob} />
         </div>

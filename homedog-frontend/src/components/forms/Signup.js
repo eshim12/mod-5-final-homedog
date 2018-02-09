@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
+import { adapter } from '../../services'
 
 class Signup extends Component{
   constructor() {
@@ -17,7 +18,9 @@ class Signup extends Component{
         password: "",
         is_host: true,
         description: "",
-        address: ""
+        address: "",
+        lat: null,
+        lng: null
       },
       imagePreviewUrl: "",
       img_file_name: ''
@@ -41,7 +44,6 @@ class Signup extends Component{
       });
     }
     reader.readAsDataURL(file)
-
   };
 
   handleChange = (e) => {
@@ -57,12 +59,21 @@ class Signup extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const data = this.state.fields
-    this.props.loginNewUser(data, this.props.history);
+    const add = this.state.fields.address.split(" ").join("+")
+    // GEOCODE API and POPULAR LAT/LNG
+    adapter.latlng(add).then(coord => {
+      const newFields = { ...this.state.fields, lat: coord.results[0].geometry.location.lat,
+      lng: coord.results[0].geometry.location.lng};
+
+      this.setState({ fields: newFields }, () => {
+        const data = this.state.fields
+        this.props.loginNewUser(data, this.props.history);
+      })
+    });
   };
 
   render() {
-    console.log("do i have a blob", this.state.fields.blob);
+    console.log(this.state.fields);
     let me;
     this.state.imagePreviewUrl ? me = <img style={{width:"100px", "border-style": "solid"}}
       id="profilePic" src={this.state.imagePreviewUrl}/> : "NO IMAGE"

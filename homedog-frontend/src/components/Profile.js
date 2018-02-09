@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from './hocs/withAuth'
 import { connect } from 'react-redux'
-import { Image, Button, Modal } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 import * as actions from '../actions'
 import AddReviewModal from './forms/AddReviewModal'
 import ReservationCard from './detailCards/ReservationCard'
@@ -30,19 +30,25 @@ class Profile extends React.Component {
     this.setState({
       review: {
         reservation_id: '',
-        content: ''
+        content: '',
+        rating: ''
       }
+    })
+  }
+
+  handleRating = (e) => {
+    console.log("handling rating", e.target.innerText);
+    const review = {...this.state.review, rating: parseInt(e.target.innerText)}
+    this.setState({
+      review: review
     })
   }
 
   handleChange = (e) => {
     console.log("creating a review", e.target.value);
-
+    const review = {...this.state.review, reservation_id: parseInt(e.target.id), content: e.target.value}
     this.setState({
-      review: {
-        reservation_id: parseInt(e.target.id),
-        content: e.target.value
-      }
+      review: review
     })
   }
   // upcomingSitter = (me) => {
@@ -82,6 +88,7 @@ class Profile extends React.Component {
                   {rsr.review ? null : <AddReviewModal
                     id={rsr.id}
                     handleChange={this.handleChange}
+                    handleRating={this.handleRating}
                     handleSubmit={this.handleSubmit}/>}
                 </div>
               )}

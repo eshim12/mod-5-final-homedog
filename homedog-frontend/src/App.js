@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Login from './components/forms/Login';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
-import VerticalNavBar from './components/VerticalNavBar'
-import Footer from './components/Footer'
 import Homepage from './components/Homepage'
 import Signup from './components/forms/Signup';
 import FindSitter from './components/forms/FindSitter';
@@ -19,7 +17,6 @@ class App extends Component {
     console.log("app page", this.props.loggedIn);
     return (
       <div className="App">
-        {this.props.loggedIn ? <VerticalNavBar /> : null}
         <div><NavBar /></div>
 
         <Switch>

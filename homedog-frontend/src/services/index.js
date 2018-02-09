@@ -67,6 +67,14 @@ const deleteReservation = (id) => {
   }).then(res => res.json())
 }
 
+const updateReservation = (id, data) => {
+  return fetch(`${API_ROOT}/reservations/${id}`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 const addReview = (data) => {
   fetch(`${API_ROOT}/reviews`, {
     method: 'POST',
@@ -91,6 +99,11 @@ const deletePet = (id) => {
   }).then(res => res.json())
 }
 
+const coord = (address) => {
+  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyC6IzqclNMAYmVTOIiCDu78DoLhxSp0h7Y`)
+    .then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -102,7 +115,8 @@ export const adapter = {
   reservations: {
     fetchAllReservations,
     addReservation,
-    deleteReservation
+    deleteReservation,
+    updateReservation
   },
   pets: {
     addPet,
@@ -110,5 +124,6 @@ export const adapter = {
   },
   reviews: {
     addReview
-  }
+  },
+  latlng: coord
 };

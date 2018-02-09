@@ -24,7 +24,8 @@ class AddPetModal extends React.Component {
         trigger={<Button
           className="ui basic blue button"
           size="tiny" onClick={this.handleClick}><Icon name="paw"/><Icon name="plus"/></Button>}
-        open={this.state.open}>
+        open={this.state.open}
+        closeIcon>
         <Modal.Header>Pet Info</Modal.Header>
         <Modal.Content>
           <AddDog handleClose={this.handleClose} me={me} />

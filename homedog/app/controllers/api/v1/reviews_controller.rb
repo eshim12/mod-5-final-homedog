@@ -27,7 +27,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.permit(:reservation_id, :content)
+    params.permit(:reservation_id, :content, :rating)
   end
 
   def set_review

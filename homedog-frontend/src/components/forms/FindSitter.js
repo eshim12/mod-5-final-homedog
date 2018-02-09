@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import * as actions from '../../actions'
 import { connect } from 'react-redux'
-import DatePicker from 'react-datepicker'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
+import MyMapComponent from '../MyMapComponent'
 
 class FindSitter extends Component {
   constructor() {
@@ -41,8 +41,6 @@ class FindSitter extends Component {
     });
     const yesUsers = this.props.allUsers.filter(user => !arr.includes(user.id))
     return yesUsers
-
-    console.log("this many people overlap", yesUsers);
   };
 
   confirmSitter = (data) => {
@@ -60,34 +58,43 @@ class FindSitter extends Component {
   render() {
     console.log("sitter page", this.state);
     console.log("sitter page all reservations", this.props.allReservations);
-    const {start_date, end_date, results} = this.state
+    const {start_date, end_date} = this.state
     let available;
     if (start_date && end_date) {
-     available = this.noOverlapListings(start_date, end_date)
+     available = this.noOverlapListings(start_date, end_date).filter(x => x.id !== this.props.currentUser.id)
 
     }
 
     return (
 
-      <div className="Profile">
-        <h1>Search for a Sitter</h1>
-        <form className="ui form sitter">
-          <label>Start Date</label>
-          <input onChange={this.handleChange} name="start_date" type="date"/>
-          <label>End Date</label>
-          <input onChange={this.handleChange} name="end_date" type="date"/>
-        </form>
-        <br/>
-        <div className="ui two column grid">
-          {available ?  available.map((user,i) =>
-              <HostCard
+      <div className="Profile ui stackable two column grid">
+        <div className="column"><center>
+          <div><h1>Search for a Sitter</h1>
+          <form className="ui form sitter">
+            <label>Start Date</label>
+            <input onChange={this.handleChange} name="start_date" type="date"/>
+            <label>End Date</label>
+            <input onChange={this.handleChange} name="end_date" type="date"/>
+          </form></div>
+          <br/>
+          <div className="ui two column centered grid"><center>
+            {available ?  available.map((user,i) => {
+              return <div className="two column centered row" style={{padding:"10px"}}>
+                <HostCard
               start_date={start_date}
               end_date={end_date}
               confirmSitter={this.confirmSitter}
               user={user}
               index={i}/>
-          ) : "Nobody available on those dates"}
-        </div>
+          </div>}
+            ) : <p>Nobody available on those dates</p>}
+          </center></div>
+        </center></div>
+      <div className="column"><center>
+          {available ? <div style={{width: '100%', height: '600px', padding:"20px"}} className="column">
+            <MyMapComponent users={available}/>
+          </div> : null}
+        </center></div>
       </div>
     )
   }

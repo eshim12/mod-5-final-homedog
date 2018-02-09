@@ -26,10 +26,17 @@ const allUsersReducer = (state = [], action) => {
       const userUpdate = user.owner_reservations.filter(x => x.id !== action.reservation.id)
       user.owner_reservations = userUpdate
       return [...allUsers, user]
+    case 'UPDATE_RESERVATION':
+      const a = state.find(x => x.id === action.reservation.host_id)
+      const rsrs = a.host_reservations.filter(x => x.id !== action.reservation.id)
+      a.host_reservations = [...rsrs, action.reservation]
+      // find the user, find the host rsr and change it
+      const usrs = state.filter(x => x.id !== action.reservation.host_id)
+      return [...usrs, a]
     case 'ADD_PET':
       const x = state.find(x => x.id === action.pet.pet_owner.id)
       x.pets.push(action.pet)
-      const xs = state.filter(x=> x.id !== x.id)
+      const xs = state.filter(user=> user.id !== x.id)
       return [...xs, x]
     case 'DELETE_PET':
       const xxs = state.find(x => x.id === action.pet.pet.pet_owner_id)
@@ -54,6 +61,9 @@ const allReservationsReducer = (state = [], action) => {
     case 'DELETE_RESERVATION':
       const reservation = state.filter(rsr => rsr.id !== action.reservation.id)
       return reservation
+    case 'UPDATE_RESERVATION':
+      const rsrs = state.filter(x => x.id !== action.reservation.id)
+      return [...rsrs, action.reservation]
     default:
       return state
   }

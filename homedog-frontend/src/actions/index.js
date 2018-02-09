@@ -93,6 +93,14 @@ export const deleteReservation = (id, history) => dispatch => {
   history.push('/profile')
 }
 
+export const updateReservation = (id, data) => dispatch => {
+  dispatch({ type: 'ASYNC_START' });
+  adapter.reservations.updateReservation(id, data)
+    .then(reservation => {
+      dispatch({ type: 'UPDATE_RESERVATION', reservation })
+    });
+}
+
 export const addReview = (data) => dispatch => {
   dispatch({ type: 'ASYNC_START' });
   adapter.reviews.addReview(data)

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import Homepage from './Homepage'
 import * as actions from '../actions';
+import VerticalNavBar from './VerticalNavBar'
 
 class NavBar extends Component {
   constructor() {
@@ -15,7 +16,9 @@ class NavBar extends Component {
 
 
     return (
+      <div>
       <div style={{width: "100%"}} className="ui fixed top menu borderless">
+        <VerticalNavBar />
         <h1 p style={{"font-size": "25px"}} className="header item navBar">
           <div>Homed</div>
           <div><img src={require('../images/paw-p.jpg')}/></div>
@@ -38,6 +41,7 @@ class NavBar extends Component {
               </NavLink>
             </div>) }
       </div>
+      </div>
     )
   }
 }
@@ -47,3 +51,5 @@ const mapStateToProps = state => ({
   currentUser: state.auth.currentUser
 });
 export default connect(mapStateToProps, actions)(NavBar)
+
+//
