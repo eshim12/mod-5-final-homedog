@@ -28,12 +28,13 @@ class FindSitter extends Component {
   }
 
   noOverlapListings = (start_date, end_date) => {
-    const myStart = new Date(start_date);
-    const myEnd = new Date(end_date);
+    const myStart = new Date(start_date).toISOString();
+    const myEnd = new Date(end_date).toISOString();
+    console.log(myStart, myEnd);
     let arr = []
     const reservations = this.props.allReservations.filter(reservation => {
-      const start = new Date(reservation.start_date)
-      const end = new Date(reservation.end_date)
+      const start = new Date(reservation.start_date).toISOString()
+      const end = new Date(reservation.end_date).toISOString()
       return (myStart >= start && myEnd <= end)
     });
     reservations.forEach(rsr => {
@@ -44,7 +45,6 @@ class FindSitter extends Component {
   };
 
   confirmSitter = (data) => {
-    // need a pet_owner_id not included in data
     console.log("in confirm button");
 
     this.props.addReservation({start_date: data.start_date, end_date: data.end_date, host_id: data.host_id, pet_owner_id: this.props.currentUser.id}, this.props.history)
@@ -59,10 +59,14 @@ class FindSitter extends Component {
     console.log("sitter page", this.state);
     console.log("sitter page all reservations", this.props.allReservations);
     const {start_date, end_date} = this.state
+
     let available;
     if (start_date && end_date) {
-     available = this.noOverlapListings(start_date, end_date).filter(x => x.id !== this.props.currentUser.id)
-
+      if (new Date(end_date).toISOString() < new Date(start_date).toISOString()) {
+        alert("pick a valid end date")
+      } else {
+        available = this.noOverlapListings(start_date, end_date).filter(x => x.id !== this.props.currentUser.id)
+      }
     }
 
     return (

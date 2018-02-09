@@ -29,7 +29,7 @@ class MyMapComponent extends Component {
 
   render() {
     const { users } = this.props
-    console.log(users);
+    // console.log(users);
     return (
       <GoogleMapReact
         apiKey={"AIzaSyC6IzqclNMAYmVTOIiCDu78DoLhxSp0h7Y"}
