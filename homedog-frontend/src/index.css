@@ -17,6 +17,12 @@ h1 {
   font-family: 'Julius Sans One', sans-serif;
 }
 
+.logo {
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
+  width: 200px;
+}
+
 .intro {
   /*background: rgba(66,134,244, 0.6);*/
   width: 55%;

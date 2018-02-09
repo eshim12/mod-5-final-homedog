@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../../actions'
 import { connect } from 'react-redux'
+import { Message } from 'semantic-ui-react'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
 import MyMapComponent from '../MyMapComponent'
@@ -60,11 +61,12 @@ class FindSitter extends Component {
     console.log("sitter page", this.state);
     console.log("sitter page all reservations", this.props.allReservations);
     const {start_date, end_date} = this.state
-
+    let alert;
     let available;
+
     if (start_date && end_date) {
       if (new Date(end_date).toISOString() < new Date(start_date).toISOString()) {
-        alert("pick a valid end date")
+        alert = <Message style={{width:"250px"}}negative ><Message.Header>Please select a valid date</Message.Header></Message>
       } else {
         available = this.noOverlapListings(start_date, end_date).filter(x => x.id !== this.props.currentUser.id)
       }
@@ -81,6 +83,7 @@ class FindSitter extends Component {
             <label>End Date</label>
             <input onChange={this.handleChange} name="end_date" type="date"/>
           </form></div>
+          {alert}
           <br/>
           <div className="ui two column centered grid"><center>
             {available ?  available.map((user,i) => {

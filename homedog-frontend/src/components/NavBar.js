@@ -20,11 +20,12 @@ class NavBar extends Component {
           <Menu.Header>
             <VerticalNavBar />
           </Menu.Header>
-          <Menu.Item>
-            <div style={{"padding-top":"10px", "font-size":"30px"}} className="navBar">Homed</div>
-            <div style={{"padding-top":"10px"}}><img src={require('../images/paw-p.jpg')}/></div>
-            <div style={{"padding-top":"10px","font-size":"30px"}} className="navBar">g</div>
-          </Menu.Item>
+          <Menu.Header >
+            <div className="logo">Homed<img src={require('../images/paw-p.jpg')}/>g</div>
+            {/*<div style={{"font-size":"30px"}} className="logo">Homed</div>
+            <div className="logo"><img src={require('../images/paw-p.jpg')}/></div>
+            <div style={{"font-size":"30px"}} className="logo">g</div>*/}
+          </Menu.Header>
           <Menu.Item>
             <NavLink to="/homepage"><h4 className="navBar">Home</h4></NavLink>
           </Menu.Item>
