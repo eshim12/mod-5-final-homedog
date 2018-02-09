@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
 import MyMapComponent from '../MyMapComponent'
+// import Email from '../../Email'
 
 class FindSitter extends Component {
   constructor() {
@@ -48,7 +49,7 @@ class FindSitter extends Component {
     console.log("in confirm button");
 
     this.props.addReservation({start_date: data.start_date, end_date: data.end_date, host_id: data.host_id, pet_owner_id: this.props.currentUser.id}, this.props.history)
-
+    // Email()
     this.setState({
       start_date: '',
       end_date: ''
