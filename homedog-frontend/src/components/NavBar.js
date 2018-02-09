@@ -21,7 +21,7 @@ class NavBar extends Component {
             <VerticalNavBar />
           </Menu.Header>
           <Menu.Header >
-            <div className="logo">Homed<img src={require('../images/paw-p.jpg')}/>g</div>
+            <div className="logo">Homed<img src={require('../images/paw-p.png')}/>g</div>
             {/*<div style={{"font-size":"30px"}} className="logo">Homed</div>
             <div className="logo"><img src={require('../images/paw-p.jpg')}/></div>
             <div style={{"font-size":"30px"}} className="logo">g</div>*/}
