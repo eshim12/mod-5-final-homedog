@@ -6,8 +6,15 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def create
-    reservation = Reservation.create(reservation_params)
-    render json: reservation, status: 201
+    reservation = Reservation.new(reservation_params)
+    if reservation.save
+      host = User.find(reservation.host_id)
+      UserMailer.welcome_email(host)
+      byebug
+      render json: reservation, status: 201
+    else
+      render json: {error: "DID NOT DELETE"}, status: 400
+    end
   end
 
   def update
