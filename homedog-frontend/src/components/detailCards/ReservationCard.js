@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react'
+import { Button, Card, Icon } from 'semantic-ui-react'
 import * as actions from '../../actions'
+import ConfirmDeletePopup from '../ConfirmDeletePopup'
 
 class ReservationCard extends React.Component {
 
   handleClick = (e) => {
-    console.log(e.target.value);
+    console.log("handling reservation delete", e.target.value);
     this.props.deleteReservation(parseInt(e.target.value), this.props.history)
   }
 
@@ -17,12 +18,16 @@ class ReservationCard extends React.Component {
     console.log("rsr card", this.props);
 
     return(
-      <div className="ui card" key={key}>
-        <p>When: {reservation.start_date} - {reservation.end_date}</p>
-        <p>With? {who.username}</p>
-        <p>{who.address}</p>
-        {reservation.review ? null : <button value={reservation.id} className="ui basic green button" onClick={this.handleClick}>Delete Booking</button>}
-      </div>
+      <Card.Content className="ui card" key={key}>
+        {reservation.review ? null : <div>
+          <ConfirmDeletePopup id={reservation.id} handleClick={this.handleClick}/>
+          </div>}
+        <Card.Header>With {who.username}</Card.Header>
+        <Card.Description>
+          <p>{reservation.start_date} to {reservation.end_date}</p>
+          <p>{who.address}</p>
+        </Card.Description>
+      </Card.Content>
     )
   }
 }

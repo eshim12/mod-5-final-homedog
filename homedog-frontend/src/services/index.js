@@ -104,6 +104,12 @@ const coord = (address) => {
     .then(res => res.json())
 }
 
+const addressDistance = (startAdd, endAdd) => {
+  // the NO ACCESS CONTROL ALLOW ORIGIN err solution is the heroku
+  return fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${startAdd}&destinations=${endAdd}&key=AIzaSyC6IzqclNMAYmVTOIiCDu78DoLhxSp0h7Y`)
+    .then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -125,5 +131,6 @@ export const adapter = {
   reviews: {
     addReview
   },
-  latlng: coord
+  latlng: coord,
+  distance: addressDistance
 };

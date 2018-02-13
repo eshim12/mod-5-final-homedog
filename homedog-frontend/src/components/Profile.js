@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from './hocs/withAuth'
 import { connect } from 'react-redux'
-import { Image } from 'semantic-ui-react'
+import { Image, Card } from 'semantic-ui-react'
 import * as actions from '../actions'
 import AddReviewModal from './forms/AddReviewModal'
 import ReservationCard from './detailCards/ReservationCard'
@@ -78,25 +78,29 @@ class Profile extends React.Component {
       <div className="Profile">
         {me ?
           me.owner_reservations ?
-            <div>
-              <h1>{me.full_name}s Profile</h1>
-              <Image style={{width:"150px", "border-style":"solid"}} src={me.blob}
-                size='medium' circular/>
-              <h3 style={{'font-family': 'Nunito, sans-serif'}}>Your Booked Sitters</h3>
-              {me.owner_reservations.map((rsr,i) =>
-                <div>
-                  <ReservationCard reservation={rsr} key={i}/>
-                  {rsr.review ? null : <AddReviewModal
-                    id={rsr.id}
-                    handleChange={this.handleChange}
-                    handleRating={this.handleRating}
-                    handleSubmit={this.handleSubmit}/>}
-                </div>
-              )}
+            <div className="ui two column grid">
+              <div className="column">
+                <h1>{me.full_name}s Profile</h1>
+                <Image style={{width:"150px", "border-style":"solid"}} src={me.blob}
+                  size='medium' circular/>
+              </div>
+              <Card.Group className="column">
+                <h3 style={{'font-family': 'Nunito, sans-serif'}}>Your Booked Sitters</h3>
+                {me.owner_reservations.map((rsr,i) =>
+                  <Card>
+                    <ReservationCard reservation={rsr} key={i}/>
+                    {rsr.review ? null : <div><AddReviewModal
+                      id={rsr.id}
+                      handleChange={this.handleChange}
+                      handleRating={this.handleRating}
+                      handleSubmit={this.handleSubmit}/></div>}
+                  </Card>
+                  )}
+              </Card.Group>
             </div>
           : null
 
-        : "loading!"}
+        : <div className="loader"></div>}
 
       </div>
 

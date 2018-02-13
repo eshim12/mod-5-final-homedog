@@ -10,10 +10,12 @@ class Api::V1::ReservationsController < ApplicationController
     if reservation.save
       host = User.find(reservation.host_id)
       UserMailer.welcome_email(host).deliver_now
-      byebug
+      pet_owner = User.find(reservation.pet_owner_id)
+      UserMailer.confirmation_email(pet_owner).deliver_now
+      # byebug
       render json: reservation, status: 201
     else
-      render json: {error: "DID NOT DELETE"}, status: 400
+      render json: {error: "DID NOT SEND EMAIL"}, status: 400
     end
   end
 

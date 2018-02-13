@@ -16,18 +16,16 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Menu pointing secondary fixed="top">
-          <Menu.Header>
+        {this.props.loggedIn ?
+        <Menu style={{"background-color":"rgba(255,255,255,0.5)"}} pointing secondary fixed="top">
+          <Menu.Header className="vertical">
             <VerticalNavBar />
           </Menu.Header>
-          <Menu.Header >
-            <div className="logo">Homed<img src={require('../images/paw-p.png')}/>g</div>
-            {/*<div style={{"font-size":"30px"}} className="logo">Homed</div>
-            <div className="logo"><img src={require('../images/paw-p.jpg')}/></div>
-            <div style={{"font-size":"30px"}} className="logo">g</div>*/}
+          <Menu.Header>
+            <div className="logo">Homed<img src={require('../images/pawpaw.png')}/>g</div>
           </Menu.Header>
-          <Menu.Item>
-            <NavLink to="/homepage"><h4 className="navBar">Home</h4></NavLink>
+          <Menu.Item position="left">
+            <NavLink to="/homepage"><h4 className="navBar">About Homedog</h4></NavLink>
           </Menu.Item>
           <Menu.Item position="right">
             { this.props.loggedIn ? (<div><p style={{"font-size": "15px"}} className="navBar">Welcome {this.props.currentUser.username}!</p></div> ) : null}
@@ -38,14 +36,23 @@ class NavBar extends Component {
                 onClick={e => {
                   e.preventDefault();
                   this.props.logoutUser();
-                }}><h4 className="navBar">Sign Out</h4></a> ) : (
-                  <div>
-                    <NavLink to="/login">
-                      <h4 className="navBar">Login</h4>
-                    </NavLink>
-                  </div>) }
+                }}><h4 className="navBar">Sign Out</h4></a> ) : null }
           </Menu.Item>
-        </Menu>
+        </Menu> :
+          <Menu pointing secondary fixed="top">
+            <Menu.Header >
+              <div className="logo">Homed<img src={require('../images/pawpaw.png')}/>g</div>
+              {/*<div style={{"font-size":"30px"}} className="logo">Homed</div>
+              <div className="logo"><img src={require('../images/paw-p.jpg')}/></div>
+              <div style={{"font-size":"30px"}} className="logo">g</div>*/}
+            </Menu.Header>
+            <Menu.Item position="right">
+              <NavLink to="/login">
+                <h4 className="navBar">Login</h4>
+              </NavLink>
+            </Menu.Item>
+          </Menu>
+      }
       </div>
     )
 

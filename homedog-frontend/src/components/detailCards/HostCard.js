@@ -1,4 +1,6 @@
 import React from 'react'
+import { Card, Image } from 'semantic-ui-react'
+import { adapter } from '../../services'
 import SitterPopup from '../SitterPopup'
 import ReviewsPopup from '../ReviewsPopup'
 
@@ -7,7 +9,7 @@ class HostCard extends React.Component {
     super()
     this.state = {
       clicked: false,
-      confirmClicked: false
+      distance:""
     }
   }
 
@@ -17,43 +19,49 @@ class HostCard extends React.Component {
     })
   };
 
-  handleBooking = () => {
-    this.setState({
-      confirmClicked: !this.state.confirmClicked
+  calculateDistance = (start, end) => {
+    adapter.distance(start.split(" ").join("+"), end.split(" ").join("+"))
+    .then(data => {
+      this.setState({
+        distance: data.rows[0].elements[0].distance.text
+      })
     })
   }
 
   render() {
-    console.log("confirm clicked", this.state.confirmClicked);
-    const {index, user, confirmSitter, start_date, end_date} = this.props
+    console.log("confirm clicked", this.state);
+    const {index, user, confirmSitter, start_date, end_date, pet_owner} = this.props
     return (
       <div>{this.state.clicked ?
-      <div style={{width: "250px"}} key={index} className="ui card">
+      <Card style={{width: "250px"}} key={index}>
         <a onClick={this.handleClick}>close</a>
-        <div className="content">
-          <div className="header">About {user.username}</div>
-          <div className="meta">{user.address}</div>
-          <div className="description">
+        <Card.Content >
+          <Card.Header>About {user.username}
+          </Card.Header>
+          <Card.Meta>{user.address}
+          </Card.Meta>
+          <Card.Description>
             <p>{user.description}</p>
-          </div>
-        </div>
-        <div className="extra content">
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
           <SitterPopup
             user={user}
             confirmSitter={confirmSitter}
             start_date={start_date}
             end_date={end_date}/>
           <ReviewsPopup user={user}/>
-        </div>
-      </div> :
-      <div style={{width: "150px"}} onClick={this.handleClick} key={index} className="ui card">
-        <div className="image">
-          <img src={user.blob} />
-        </div>
-        <div className="content">
+        </Card.Content>
+      </Card> :
+      <Card style={{width: "150px"}} onClick={this.handleClick} key={index}>
+          <Image src={user.blob} />
+        {this.state.distance ? <Card.Meta>
+          {this.state.distance} from your address
+        </Card.Meta>: console.log("no distance")}
+        <Card.Content >
           <h3>{user.full_name}</h3>
-        </div>
-      </div>}</div>
+        </Card.Content>
+      </Card>}</div>
     )
   }
 }

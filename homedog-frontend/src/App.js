@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './components/forms/Login';
 import Profile from './components/Profile';
@@ -13,12 +13,18 @@ import * as actions from './actions';
 
 class App extends Component {
 
-  render() {
-    console.log("app page", this.props.loggedIn);
-    return (
-      <div className="App">
-        <div><NavBar /></div>
 
+  render() {
+    const {loggedIn} = this.props
+    console.log("app page", this.props.loggedIn)
+
+    return (
+      <div className="App bg">
+        {!loggedIn ? <video muted autoPlay loop id="myVideo">
+          <source src={require("./video/beachpuppy.mp4")} type="video/mp4"/>
+        </video> : null}
+        <div><NavBar /></div>
+        
         <Switch>
           <Route path="/homepage" component={Homepage} />
           <Route path="/login" component={Login} />

@@ -22,8 +22,9 @@ class AddPetModal extends React.Component {
     return(
       <Modal
         trigger={<Button
-          className="ui basic blue button"
-          size="tiny" onClick={this.handleClick}><Icon name="paw"/><Icon name="plus"/></Button>}
+          className="ui basic green button"
+          size="tiny"
+          icon="green paw" onClick={this.handleClick}/>}
         open={this.state.open}
         closeIcon>
         <Modal.Header>Pet Info</Modal.Header>

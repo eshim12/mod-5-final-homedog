@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal, Dropdown } from 'semantic-ui-react'
+import { Button, Modal, Dropdown, Icon } from 'semantic-ui-react'
 
 const ratings = [
   {key:1, value:1,text:1},
@@ -10,7 +10,7 @@ const ratings = [
 const AddReviewModal = ({id, handleSubmit, handleChange, handleRating}) => {
   return(
     <Modal
-      trigger={<Button className="ui basic blue button">Add Review</Button>}>
+      trigger={<p style={{float:"right"}}>write a review <Icon name="green compose"/></p>}>
       <Modal.Header>Review</Modal.Header>
       <Modal.Content>
         <form className="ui form" onSubmit={handleSubmit} >

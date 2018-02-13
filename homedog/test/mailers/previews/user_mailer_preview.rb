@@ -6,4 +6,9 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome_email(user)
   end
 
+  def confirmation_email
+    user = User.last
+    @url = 'http://localhost:3001/login'
+    UserMailer.confirmation_email(user)
+  end
 end
