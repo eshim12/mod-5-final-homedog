@@ -12,9 +12,10 @@ export const loginUser = (username, password, history) => dispatch => {
   adapter.auth.login({ username, password }).then(user => {
     if (user.error) {
       dispatch({
-        type: 'LOGIN_ERROR'
+        type: 'LOGIN_ERROR',
+        error: user.error
       })
-      alert("Try Again")
+      // alert(user.error)
     } else {
       localStorage.setItem('token', user.jwt);
       dispatch({ type: 'SET_CURRENT_USER', user });
@@ -90,7 +91,6 @@ export const deleteReservation = (id, history) => dispatch => {
       dispatch({ type: 'DELETE_RESERVATION', reservation })
     });
   alert("Deleted!")
-  history.push('/profile')
 }
 
 export const updateReservation = (id, data) => dispatch => {

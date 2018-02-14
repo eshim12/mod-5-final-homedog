@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Icon, Image } from 'semantic-ui-react'
 // import Homepage from './Homepage'
 import * as actions from '../actions';
 import VerticalNavBar from './VerticalNavBar'
@@ -14,83 +14,42 @@ class NavBar extends Component {
     }
   }
   render() {
+    console.log("nav bar me?", this.props.me);
     return (
       <div>
-        {this.props.loggedIn ?
-        <Menu style={{"background-color":"rgba(255,255,255,0.5)"}} pointing secondary fixed="top">
-          <Menu.Header className="vertical">
-            <VerticalNavBar />
-          </Menu.Header>
-          <Menu.Header>
-            <div className="logo">Homed<img src={require('../images/pawpaw.png')}/>g</div>
-          </Menu.Header>
-          <Menu.Item position="left">
-            <NavLink to="/homepage"><h4 className="navBar">About Homedog</h4></NavLink>
+        {this.props.loggedIn && this.props.me ?
+        <Menu style={{backgroundColor:"rgba(255,255,255,0.5)"}} pointing stackable secondary fixed="top">
+          <Menu.Item>
+            <div className="logo">Homed<Icon name="paw"/>g</div>
           </Menu.Item>
-          <Menu.Item position="right">
-            { this.props.loggedIn ? (<div><p style={{"font-size": "15px"}} className="navBar">Welcome {this.props.currentUser.username}!</p></div> ) : null}
-          </Menu.Item>
-          <Menu.Item position="right">
-            { this.props.loggedIn ? (
-              <a
-                onClick={e => {
-                  e.preventDefault();
-                  this.props.logoutUser();
-                }}><h4 className="navBar">Sign Out</h4></a> ) : null }
-          </Menu.Item>
+          <Menu.Menu position="right" className="vertical">
+            <Menu.Item >
+              <p style={{fontSize: "15px"}} className="navBar">Welcome {this.props.currentUser.username}!</p>
+            </Menu.Item>
+            <Menu.Header>
+              <VerticalNavBar />
+            </Menu.Header>
+          </Menu.Menu>
         </Menu> :
           <Menu pointing secondary fixed="top">
             <Menu.Header >
               <div className="logo">Homed<img src={require('../images/pawpaw.png')}/>g</div>
-              {/*<div style={{"font-size":"30px"}} className="logo">Homed</div>
-              <div className="logo"><img src={require('../images/paw-p.jpg')}/></div>
-              <div style={{"font-size":"30px"}} className="logo">g</div>*/}
             </Menu.Header>
             <Menu.Item position="right">
               <NavLink to="/login">
                 <h4 className="navBar">Login</h4>
               </NavLink>
             </Menu.Item>
-          </Menu>
-      }
+          </Menu> }
       </div>
     )
-
   }
 }
 
-// return (
-//   <div>
-//     <div style={{width: "100%"}} className="ui fixed top menu borderless">
-//       <VerticalNavBar />
-//       <h1 p style={{"font-size": "25px"}} className="header item navBar">
-//         <div>Homed</div>
-//         <div><img src={require('../images/paw-p.jpg')}/></div>
-//         <div>g</div>
-//       </h1>
-//       <NavLink className="item" to="/homepage"><h4 className="navBar">Home</h4></NavLink>
-//
-//       { this.props.loggedIn ? (<div className="item"><p style={{"font-size": "15px"}} className="navBar">Welcome {this.props.currentUser.username}!</p></div> ) : null}
-//
-//       { this.props.loggedIn ? (
-//         <a
-//           className="right item"
-//           onClick={e => {
-//             e.preventDefault();
-//             this.props.logoutUser();
-//           }}><h4 className="navBar">Sign Out</h4></a> ) : (
-//             <div className="right item">
-//               <NavLink to="/login">
-//                 <h4 className="navBar">Login</h4>
-//               </NavLink>
-//             </div>) }
-//           </div>
-//         </div>
-//       )
 const mapStateToProps = state => ({
   loggedIn: !!state.auth.currentUser.id,
-  currentUser: state.auth.currentUser
+  currentUser: state.auth.currentUser,
+  me: state.users.find(x => x.username === state.auth.currentUser.username)
 });
-export default connect(mapStateToProps, actions)(NavBar)
 
-//
+export default connect(mapStateToProps, actions)(NavBar)

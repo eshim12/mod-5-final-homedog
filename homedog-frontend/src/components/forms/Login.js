@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
+import { Message } from 'semantic-ui-react';
 import * as actions from '../../actions';
 
 class Login extends React.Component {
@@ -29,13 +30,12 @@ class Login extends React.Component {
 
   render() {
     const { fields } = this.state;
-    console.log(this.state);
+    console.log("in login", this.state);
     return (
       <div>
-        {this.state.error ? <h1>Try Again</h1> : null}
         <div className="ui form login">
           <form onSubmit={this.handleSubmit}>
-            <h2 style={{'font-family':'Nunito, sans-serif'}}>Sign in</h2>
+            <h2 style={{fontFamily:'Nunito, sans-serif'}}>Sign in</h2>
             <div className="ui field">
               <label>Username</label>
               <input
@@ -59,6 +59,7 @@ class Login extends React.Component {
               Login
             </button>
           </form>
+          {this.props.error ? <Message negative>{this.props.error}</Message> : null}
           <p>New user? <NavLink
             to="/signup">
               Sign Up!
@@ -69,4 +70,8 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(connect(null, actions)(Login));
+const mapStateToProps = (state) => ({
+  error: state.auth.login_error
+})
+
+export default withRouter(connect(mapStateToProps, actions)(Login));

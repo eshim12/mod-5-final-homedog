@@ -9,7 +9,7 @@ class Api::V1::AuthController < ApplicationController
 
      render json: {id: user.id, username: user.username, jwt: token}
    else
-     render json: {error: 'That user could not be found'}, status: 401
+     render json: {error: 'Wrong password/username'}, status: 401
    end
  end
 

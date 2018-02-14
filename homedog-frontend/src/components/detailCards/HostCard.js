@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 import { adapter } from '../../services'
 import SitterPopup from '../SitterPopup'
 import ReviewsPopup from '../ReviewsPopup'
@@ -29,8 +29,8 @@ class HostCard extends React.Component {
   }
 
   render() {
-    console.log("confirm clicked", this.state);
     const {index, user, confirmSitter, start_date, end_date, pet_owner} = this.props
+    this.calculateDistance(pet_owner.address, user.address)
     return (
       <div>{this.state.clicked ?
       <Card style={{width: "250px"}} key={index}>
@@ -56,7 +56,7 @@ class HostCard extends React.Component {
       <Card style={{width: "150px"}} onClick={this.handleClick} key={index}>
           <Image src={user.blob} />
         {this.state.distance ? <Card.Meta>
-          {this.state.distance} from your address
+          <Icon name="marker"/>{this.state.distance}
         </Card.Meta>: console.log("no distance")}
         <Card.Content >
           <h3>{user.full_name}</h3>

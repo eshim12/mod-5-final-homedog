@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Login from './components/forms/Login';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer'
 import Homepage from './components/Homepage'
 import Signup from './components/forms/Signup';
 import FindSitter from './components/forms/FindSitter';
@@ -24,7 +25,8 @@ class App extends Component {
           <source src={require("./video/beachpuppy.mp4")} type="video/mp4"/>
         </video> : null}
         <div><NavBar /></div>
-        
+        <div><Footer /></div>
+
         <Switch>
           <Route path="/homepage" component={Homepage} />
           <Route path="/login" component={Login} />

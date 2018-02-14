@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { adapter } from '../../services'
+import { Button, Popup } from 'semantic-ui-react'
+
+const Info = ({handleCheckbox}) => (
+  <Popup
+    trigger={<input onChange={handleCheckbox} type="checkbox" id="notHost" name="is_host" value="notHost"/>}
+    content="If you don't want to be a host, check box."
+    basic
+  />
+)
 
 class Signup extends Component{
   constructor() {
@@ -80,21 +89,20 @@ class Signup extends Component{
     let yesHost;
     this.state.fields.is_host ? yesHost = <div className="ui field">
       <label>Description</label>
-      <textarea
+      <input
+        type="text"
         name="description"
         placeholder="host description"
         // value={fields.username}
         onChange={this.handleChange}
       />
-    <label>Address</label>
-    <input type="text" name="address" placeholder="address" onChange={this.handleChange}/>
     </div> : ""
 
     return(
       <div className="ui form signup">
         <form onSubmit={this.handleSubmit}>
-          <h2 style={{"font-family": "Nunito, sans-serif"}}><center>Sign Up</center></h2>
-          <input onChange={this.handleCheckbox} type="checkbox" id="notHost" name="is_host" value="notHost"/>
+          <h2 style={{fontFamily: "Nunito, sans-serif"}}><center>Sign Up</center></h2>
+          <Info handleCheckbox={this.handleCheckbox}/>
           <label htmlFor="notHost">Not a Host</label>
           {/* IMAGE UPLOAD*/}
           <div className="ui field">
@@ -106,6 +114,7 @@ class Signup extends Component{
             <label>Username</label>
             <input
               name="username"
+              required
               placeholder="username"
               // value={fields.username}
               onChange={this.handleChange}
@@ -121,8 +130,13 @@ class Signup extends Component{
             />
           </div>
           <div className="ui field">
+            <label>Address</label>
+            <input type="text" name="address" placeholder="address" onChange={this.handleChange} required/>
+          </div>
+          <div className="ui field">
             <label>Email</label>
             <input
+              required
               name="email"
               type="email"
               placeholder="example@example.com"
@@ -133,6 +147,7 @@ class Signup extends Component{
           <div className="ui field">
             <label>Password</label>
             <input
+              required
               type="password"
               name="password"
               placeholder="password"

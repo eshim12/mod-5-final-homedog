@@ -22,17 +22,19 @@ class AddPetModal extends React.Component {
     return(
       <Modal
         trigger={<Button
-          className="ui basic green button"
+          basic
+          green
+          style={{float:"left"}}
           size="tiny"
           icon="green paw" onClick={this.handleClick}/>}
-        open={this.state.open}
-        closeIcon>
-        <Modal.Header>Pet Info</Modal.Header>
+        open={this.state.open}>
+        <Modal.Actions>
+          <Icon name="x" onClick={this.handleClose}/>
+        </Modal.Actions>
+        <Modal.Header>Pet's Information</Modal.Header>
         <Modal.Content>
           <AddDog handleClose={this.handleClose} me={me} />
         </Modal.Content>
-        <Modal.Actions>
-          </Modal.Actions>
       </Modal>
     )
   }

@@ -32,7 +32,6 @@ class AddDog extends React.Component {
       });
     }
     reader.readAsDataURL(file)
-
   };
 
   handleChange = (e) => {

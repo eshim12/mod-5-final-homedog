@@ -7,6 +7,7 @@ class UpdateHost extends React.Component {
   state = {
     address: this.props.me.address,
     description: this.props.me.description,
+    is_host: true,
     open: false
   }
 
@@ -26,9 +27,9 @@ class UpdateHost extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { me } = this.props
-    const { address, description } = this.state
+    const { address, description, is_host } = this.state
 
-    this.props.updateUser(me.id, {address, description})
+    this.props.updateUser(me.id, {address, description, is_host})
     this.setState({
       open: false
     })

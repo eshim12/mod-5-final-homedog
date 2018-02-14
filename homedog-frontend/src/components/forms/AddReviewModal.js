@@ -10,7 +10,7 @@ const ratings = [
 const AddReviewModal = ({id, handleSubmit, handleChange, handleRating}) => {
   return(
     <Modal
-      trigger={<p style={{float:"right"}}>write a review <Icon name="green compose"/></p>}>
+      trigger={<p style={{float:"right", fontFamily: 'Julius Sans One, sans-serif', fontSize:"10px"}}>write a review <Icon name="green compose"/></p>}>
       <Modal.Header>Review</Modal.Header>
       <Modal.Content>
         <form className="ui form" onSubmit={handleSubmit} >

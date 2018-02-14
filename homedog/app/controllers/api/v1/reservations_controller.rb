@@ -26,9 +26,13 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    # byebug
     reservation = Reservation.find(params[:id])
     if reservation.destroy
+      host = User.find(reservation.host_id)
+      pet_owner = User.find(reservation.pet_owner_id)
+      UserMailer.delete_confirm_host(host).deliver_now
+      UserMailer.delete_confirm_owner(pet_owner).deliver_now
+      # byebug
       render json: {message:"Zap! reservation deleted", id: reservation.id, pet_owner_id: reservation.pet_owner_id, host_id: reservation.host_id }
     else
       render json: {error: "DID NOT DELETE"}, status: 400

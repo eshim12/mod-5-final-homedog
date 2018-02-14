@@ -10,7 +10,8 @@ const authReducer = (state = initialState, action) => {
     case 'LOGOUT_USER':
       return { ...state, currentUser: {} };
     case 'LOGIN_ERROR':
-      return { ...state, currentUser: {}, login_error: true };
+    // debugger
+      return { ...state, currentUser: {}, login_error: action.error };
     default:
       return state;
   }
@@ -20,17 +21,24 @@ const allUsersReducer = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_USERS':
       return action.users
+    case 'ADD_RESERVATION':
+    // debugger
+      const meme = state.find(x => x.id === action.reservation.pet_owner_id)
+      meme.owner_reservations.push(action.reservation)
+      const meh = state.filter(user=> user.id !== meme.id)
+      return [...meh, meme]
     case 'DELETE_RESERVATION':
+    // debugger
       const user = state.find(x => x.id === action.reservation.pet_owner_id)
-      const allUsers = state.filter(x=> x.id !== user.id)
+      console.log("in reducer", user.owner_reservations);
       const userUpdate = user.owner_reservations.filter(x => x.id !== action.reservation.id)
       user.owner_reservations = userUpdate
+      const allUsers = state.filter(x=> x.id !== user.id)
       return [...allUsers, user]
     case 'UPDATE_RESERVATION':
       const a = state.find(x => x.id === action.reservation.host_id)
       const rsrs = a.host_reservations.filter(x => x.id !== action.reservation.id)
       a.host_reservations = [...rsrs, action.reservation]
-      // find the user, find the host rsr and change it
       const usrs = state.filter(x => x.id !== action.reservation.host_id)
       return [...usrs, a]
     case 'ADD_PET':

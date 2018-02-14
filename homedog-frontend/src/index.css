@@ -1,7 +1,10 @@
 body {
   margin: 0;
-  padding-top: 80px;
+  padding-top: 56px;
+  padding-bottom: 50px;
   font-family: 'Nunito', sans-serif;
+  background-color: #f7f7f7;
+
 }
 
 h1 {
@@ -18,7 +21,7 @@ h1 {
 
 /* NavBar */
 .ui.fixed.top.menu {
-  height: 9%;
+  /*height: 9%;*/
   border-style: none;
 }
 
@@ -30,19 +33,26 @@ h1 {
   font-family: 'Julius Sans One', sans-serif;
   font-size: 30px;
   width: 200px;
-  margin-top: 10.5%;
+  /*margin-top: 4.3%;*/
 }
 
 .vertical {
   margin-top: 20px;
 }
 
+/*Footer*/
+
+.footer {
+  font-family: 'Julius Sans One', sans-serif;
+  border-style: none;
+}
+
 /*Homepage*/
 .intro {
   /*background: rgba(66,134,244, 0.6);*/
-  width: 55%;
+  width: 100%;
   margin: auto;
-  border-radius: 25px;
+
 }
 
 .introText {
@@ -52,11 +62,13 @@ h1 {
 
 /*Profile Page*/
 .Profile {
+  padding-top: 20px;
   padding-left: 10%;
   padding-right: 10%;
 }
 
 .loader {
+  margin: auto;
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
@@ -85,10 +97,16 @@ h1 {
 .login {
   width: 30%;
   margin: auto;
+  background-color: rgba(255,255,255,0.3);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /*Sign Up page*/
 .signup {
   width: 30%;
   margin: auto;
+  background-color: rgba(255,255,255,0.3);
+  padding: 10px;
+  border-radius: 10px;
 }

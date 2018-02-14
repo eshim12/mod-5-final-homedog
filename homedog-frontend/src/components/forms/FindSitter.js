@@ -23,7 +23,6 @@ class FindSitter extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -45,13 +44,10 @@ class FindSitter extends Component {
       console.log(arr);
     });
     const yesUsers = this.props.allUsers.filter(user => !arr.includes(user.id))
-    console.log("available", yesUsers);
     return yesUsers
   };
 
   confirmSitter = (data) => {
-    console.log("in confirm button");
-
     this.props.addReservation({start_date: data.start_date, end_date: data.end_date, host_id: data.host_id, pet_owner_id: this.props.currentUser.id}, this.props.history)
     // Email()
     this.setState({
@@ -61,25 +57,24 @@ class FindSitter extends Component {
   }
 
   render() {
-    const {allUsers, currentUser} = this.props
+    const {allUsers, currentUser, me} = this.props
     const {start_date, end_date} = this.state
-    let me;
-    me = allUsers ? allUsers.find(x => x.username === currentUser.username) : null
     let alert;
     let available;
 
+    start_date ? new Date(start_date).toISOString() < new Date().toISOString() ? alert = <Message style={{width:"250px"}} negative >Selected date has passed</Message> : null :null
+
     if (start_date && end_date) {
       if (new Date(end_date).toISOString() < new Date(start_date).toISOString()) {
-        alert = <Message style={{width:"250px"}}negative ><Message.Header>Please select a valid date</Message.Header></Message>
+        alert = <Message style={{width:"250px"}}negative >Please select a valid date</Message>
       } else {
-
         available = this.noOverlapListings(start_date, end_date).filter(x => x.id !== this.props.currentUser.id)
       }
     }
 
     return (
 
-      <div className="Profile ui stackable two column grid">
+      <div style={{paddingTop: "20px"}}className="Profile ui stackable two column grid">
         <div className="column"><center>
           <div><h1>Search for a Sitter</h1>
           <form className="ui form sitter">
@@ -114,10 +109,12 @@ class FindSitter extends Component {
   }
 }
 
-const mapStateToProps = ({auth, users, reservations}) => (
-  {loggedIn: !!auth.currentUser.id,
+const mapStateToProps = ({auth, users, reservations}) => ({
+  loggedIn: !!auth.currentUser.id,
   currentUser: auth.currentUser,
   allUsers: users,
+  me: users.find(x => x.username === auth.currentUser.username),
   allReservations: reservations
 });
+
 export default withAuth(connect(mapStateToProps, actions)(FindSitter))

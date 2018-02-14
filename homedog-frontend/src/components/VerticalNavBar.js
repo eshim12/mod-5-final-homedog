@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Dropdown, Icon } from 'semantic-ui-react'
+import { Dropdown, Icon, Image } from 'semantic-ui-react'
 // import Homepage from './Homepage'
 import * as actions from '../actions';
 
@@ -14,7 +14,7 @@ class VerticalNavBar extends Component {
 
     return (
 
-      <Dropdown icon="bars" className='link item'>
+      <Dropdown trigger={<Image src={me.blob} avatar/>} className='link item'>
       <Dropdown.Menu>
         <Dropdown.Item>
           <NavLink className="item" to="/profile">My Profile</NavLink>
@@ -27,6 +27,11 @@ class VerticalNavBar extends Component {
         </Dropdown.Item>
         <Dropdown.Item>
           <NavLink className="item" to="/mydogprof">My Dog Page</NavLink>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <a onClick={e => {e.preventDefault();
+            this.props.logoutUser();
+          }}><h4 className="item">Sign Out</h4></a>
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
