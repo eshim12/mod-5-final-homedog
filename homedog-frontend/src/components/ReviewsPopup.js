@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Modal, Icon } from 'semantic-ui-react'
 import ReviewCard from './detailCards/ReviewCard'
 
-const ReviewsPopup = ({user, start_date, end_date, confirmSitter}) => {
+const ReviewsPopup = ({user}) => {
 
   return (
     <Modal

@@ -9,9 +9,9 @@ class Api::V1::ReservationsController < ApplicationController
     reservation = Reservation.new(reservation_params)
     if reservation.save
       host = User.find(reservation.host_id)
-      UserMailer.welcome_email(host).deliver_now
       pet_owner = User.find(reservation.pet_owner_id)
-      UserMailer.confirmation_email(pet_owner).deliver_now
+      UserMailer.welcome_email(host, pet_owner).deliver_now
+      UserMailer.confirmation_email(pet_owner, host).deliver_now
       # byebug
       render json: reservation, status: 201
     else

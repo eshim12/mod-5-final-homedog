@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, Card, Icon, Image } from 'semantic-ui-react'
 import * as actions from '../../actions'
 import ConfirmDeletePopup from '../ConfirmDeletePopup'
+import PetInfoModal from '../PetInfoModal'
 
 class ReservationCard extends React.Component {
 
@@ -23,6 +24,7 @@ class ReservationCard extends React.Component {
           <p>{reservation.start_date} to {reservation.end_date}</p>
           <p>{user.address}</p>
         </Card.Description>
+        {user.pets.length > 0 ? <PetInfoModal user={user}/> : null}
       </Card.Content>
     )
   }

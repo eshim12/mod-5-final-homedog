@@ -3,6 +3,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 import { adapter } from '../../services'
 import SitterPopup from '../SitterPopup'
 import ReviewsPopup from '../ReviewsPopup'
+import PetInfoModal from '../PetInfoModal'
 
 class HostCard extends React.Component {
   constructor() {
@@ -51,6 +52,7 @@ class HostCard extends React.Component {
             start_date={start_date}
             end_date={end_date}/>
           <ReviewsPopup user={user}/>
+          {user.pets.length > 0 ? <PetInfoModal user={user}/> : null}
         </Card.Content>
       </Card> :
       <Card style={{width: "150px", fontFamily:"Nunito, sans-serif"}} onClick={this.handleClick} key={index}>

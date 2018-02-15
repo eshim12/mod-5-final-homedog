@@ -5,6 +5,7 @@ import { Icon, Card, Grid } from 'semantic-ui-react'
 import withAuth from './hocs/withAuth'
 import ReservationCard from './detailCards/ReservationCard'
 import UpdateHost from './forms/UpdateHost'
+import ReviewsPopup from './ReviewsPopup'
 
 class MyHostPage extends Component {
 
@@ -36,7 +37,8 @@ class MyHostPage extends Component {
                 <UpdateHost me={me}/>
               </Grid.Column>
               <Grid.Column>
-
+                <h3 style={{fontFamily:"Nunito, sans-serif"}}>Read what pet owners said about you! </h3>
+                <ReviewsPopup user={me}/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

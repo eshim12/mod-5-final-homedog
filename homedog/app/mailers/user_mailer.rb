@@ -1,13 +1,15 @@
 class UserMailer < ApplicationMailer
 
-  def welcome_email(user)
+  def welcome_email(user, owner)
     @user = user
+    @owner = owner
     @url  = 'http://localhost:3001/login'
     mail(to: user.email, subject: 'You have a reservation!')
   end
 
-  def confirmation_email(user)
+  def confirmation_email(user, host)
     @user = user
+    @host = host
     @url = 'http://localhost:3001/login'
     mail(to: user.email, subject: 'Confirming your reservation')
   end

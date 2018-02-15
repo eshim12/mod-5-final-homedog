@@ -24,6 +24,12 @@ class UpdateHost extends React.Component {
     })
   }
 
+  handleClose = () => {
+    this.setState({
+      open: false
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { me } = this.props
@@ -41,7 +47,10 @@ class UpdateHost extends React.Component {
         style={{width: "60%"}}
         trigger={<a onClick={this.handleClick}><Icon name="edit"/></a>}
         open={this.state.open}>
-        <Modal.Header>Review</Modal.Header>
+        <Modal.Actions>
+          <Icon name="x" onClick={this.handleClose}/>
+        </Modal.Actions>
+        <Modal.Header>Update my host profile</Modal.Header>
         <Modal.Content>
           <form className="ui form" onSubmit={this.handleSubmit}>
             <div className="ui field">

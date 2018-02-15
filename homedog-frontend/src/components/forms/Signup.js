@@ -131,7 +131,7 @@ class Signup extends Component{
           </div>
           <div className="ui field">
             <label>Address</label>
-            <input type="text" name="address" placeholder="address" onChange={this.handleChange} required/>
+            <input type="text" name="address" placeholder="ex: 55 w 14th st New York, NY" onChange={this.handleChange} required/>
           </div>
           <div className="ui field">
             <label>Email</label>
