@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 
 const SitterPopup = ({user, start_date, end_date, confirmSitter}) => {
-  console.log("in popup");
 
   return (
     <Modal

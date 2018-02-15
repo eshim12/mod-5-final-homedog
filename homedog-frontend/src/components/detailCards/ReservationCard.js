@@ -7,11 +7,6 @@ import ConfirmDeletePopup from '../ConfirmDeletePopup'
 
 class ReservationCard extends React.Component {
 
-  // handleClick = (e) => {
-  //   console.log("handling reservation delete", e.target.value);
-  //   this.props.deleteReservation(parseInt(e.target.value), this.props.history)
-  //   this.props.handleClose()
-  // }
 
   render() {
     const {who, reservation, key, allUsers} = this.props

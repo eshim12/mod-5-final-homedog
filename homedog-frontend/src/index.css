@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin-bottom: 50px;
   padding-top: 56px;
   padding-bottom: 50px;
   font-family: 'Nunito', sans-serif;
@@ -45,7 +45,15 @@ h1 {
 .footer {
   font-family: 'Julius Sans One', sans-serif;
   border-style: none;
+  height: auto !important;
+
 }
+
+/*.ui.footer.segment {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}*/
 
 /*Homepage*/
 .intro {
@@ -107,6 +115,6 @@ h1 {
   width: 30%;
   margin: auto;
   background-color: rgba(255,255,255,0.3);
-  padding: 10px;
+  padding: 0.3em 1em;
   border-radius: 10px;
 }

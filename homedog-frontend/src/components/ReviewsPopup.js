@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Icon } from 'semantic-ui-react'
 import ReviewCard from './detailCards/ReviewCard'
 
 const ReviewsPopup = ({user, start_date, end_date, confirmSitter}) => {
-  console.log("in review popup");
 
   return (
     <Modal

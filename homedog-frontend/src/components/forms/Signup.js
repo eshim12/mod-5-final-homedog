@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { adapter } from '../../services'
-import { Button, Popup } from 'semantic-ui-react'
+import { Button, Popup, Image } from 'semantic-ui-react'
 
 const Info = ({handleCheckbox}) => (
   <Popup
@@ -84,7 +84,7 @@ class Signup extends Component{
   render() {
     console.log(this.state.fields);
     let me;
-    this.state.imagePreviewUrl ? me = <img style={{width:"100px", "border-style": "solid"}}
+    this.state.imagePreviewUrl ? me = <Image border style={{width:"100px"}}
       id="profilePic" src={this.state.imagePreviewUrl}/> : "NO IMAGE"
     let yesHost;
     this.state.fields.is_host ? yesHost = <div className="ui field">

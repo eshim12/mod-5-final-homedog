@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../../actions'
 import { connect } from 'react-redux'
-import { Message } from 'semantic-ui-react'
+import { Message, Divider } from 'semantic-ui-react'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
 import MyMapComponent from '../MyMapComponent'
@@ -95,9 +95,10 @@ class FindSitter extends Component {
               confirmSitter={this.confirmSitter}
               user={user}
               index={i}/>
-          </div>}
+                </div>}
             ) : <p>Nobody available on those dates</p>}
           </center></div>
+          <Divider hidden/>
         </center></div>
       <div className="column"><center>
           {available ? <div style={{width: '100%', height: '600px', padding:"20px"}} className="column">

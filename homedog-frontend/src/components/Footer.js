@@ -16,7 +16,7 @@ export default class Footer extends Component {
         <Menu.Item>
           <NavLink to="/homepage"><h4 className="footer">About Homedog</h4></NavLink>
         </Menu.Item>
-        <Menu.Item className="footer" name='jobs' active={activeItem === 'jobs'} onClick={this.handleItemClick} />
+        <Menu.Item position="right" className="footer" name='jobs' active={activeItem === 'jobs'} onClick={this.handleItemClick} />
         <Menu.Item className="footer" name='locations' active={activeItem === 'locations'} onClick={this.handleItemClick} />
       </Menu>
     )

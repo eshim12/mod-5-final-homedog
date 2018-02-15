@@ -35,7 +35,7 @@ class HostCard extends React.Component {
       <div>{this.state.clicked ?
       <Card style={{width: "250px"}} key={index}>
         <a onClick={this.handleClick}>close</a>
-        <Card.Content >
+        <Card.Content style={{fontFamily:"Nunito, sans-serif"}}>
           <Card.Header>About {user.username}
           </Card.Header>
           <Card.Meta>{user.address}
@@ -53,7 +53,7 @@ class HostCard extends React.Component {
           <ReviewsPopup user={user}/>
         </Card.Content>
       </Card> :
-      <Card style={{width: "150px"}} onClick={this.handleClick} key={index}>
+      <Card style={{width: "150px", fontFamily:"Nunito, sans-serif"}} onClick={this.handleClick} key={index}>
           <Image src={user.blob} />
         {this.state.distance ? <Card.Meta>
           <Icon name="marker"/>{this.state.distance}

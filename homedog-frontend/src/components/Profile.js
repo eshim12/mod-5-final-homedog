@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from './hocs/withAuth'
 import { connect } from 'react-redux'
-import { Grid, Image, Card } from 'semantic-ui-react'
+import { Grid, Image, Card, Divider } from 'semantic-ui-react'
 import * as actions from '../actions'
 import AddReviewModal from './forms/AddReviewModal'
 import ReservationCard from './detailCards/ReservationCard'
@@ -111,6 +111,7 @@ class Profile extends React.Component {
                     </Card.Group>
                 </Grid.Column>
               </Grid.Row>
+              <Divider hidden/>
             </Grid>
           : null
 
