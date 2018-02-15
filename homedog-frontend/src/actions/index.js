@@ -81,7 +81,6 @@ export const deletePet = (id) => dispatch => {
     .then(pet =>
       dispatch({ type: 'DELETE_PET', pet })
     );
-  alert("Deleted!")
 }
 
 export const deleteReservation = (id, history) => dispatch => {
@@ -90,7 +89,6 @@ export const deleteReservation = (id, history) => dispatch => {
     .then(reservation => {
       dispatch({ type: 'DELETE_RESERVATION', reservation })
     });
-  alert("Deleted!")
 }
 
 export const updateReservation = (id, data) => dispatch => {

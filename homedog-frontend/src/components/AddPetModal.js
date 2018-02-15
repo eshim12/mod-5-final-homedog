@@ -26,6 +26,7 @@ class AddPetModal extends React.Component {
           green
           style={{float:"left"}}
           size="tiny"
+          content="add"
           icon="green paw" onClick={this.handleClick}/>}
         open={this.state.open}>
         <Modal.Actions>

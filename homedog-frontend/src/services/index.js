@@ -76,7 +76,7 @@ const updateReservation = (id, data) => {
 }
 
 const addReview = (data) => {
-  fetch(`${API_ROOT}/reviews`, {
+  return fetch(`${API_ROOT}/reviews`, {
     method: 'POST',
     headers,
     body: JSON.stringify(data)

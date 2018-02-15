@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../actions'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Card, Divider } from 'semantic-ui-react'
 import withAuth from './hocs/withAuth'
 import PetCard from './detailCards/PetCard'
 import AddPetModal from './AddPetModal'
@@ -44,10 +44,12 @@ class MyDogPage extends Component {
       {loggedIn && me ?
         <div>
           <h1>Your Dogs</h1>
+          {me.pets.length === 0 ? <p>You have no pets!</p> : null}
           <Card.Group itemsPerRow={3}>
             {me.pets.map((pet,i) =>
               <PetCard key={i} pet={pet} />)}
           </Card.Group>
+          <Divider hidden/>
           <AddPetModal me={currentUser}/>
         </div>
       : null}

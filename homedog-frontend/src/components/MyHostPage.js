@@ -47,7 +47,7 @@ class MyHostPage extends Component {
                   {me.host_reservations.map((rsr, i) =>
                     <Card>
                       <br/>
-                      <ReservationCard key={i} reservation={rsr}/>
+                      <ReservationCard key={i} who={rsr.pet_owner_id} reservation={rsr}/>
                       {rsr.has_alert ? ( <Icon  onClick={()=>this.handleUpdate(rsr)} name="red warning"/>) : null}
                     </Card>
                   )}

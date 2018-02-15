@@ -99,7 +99,7 @@ class Profile extends React.Component {
                   <Card.Group itemsPerRow={3}>
                     {me.owner_reservations.sort(function(a,b){return new Date(b.start_date) - new Date(a.start_date)}).map((rsr,i) =>
                       <Card>
-                        <ReservationCard reservation={rsr} key={i}/>
+                        <ReservationCard who={rsr.host_id} reservation={rsr} key={i}/>
                         {rsr.review ? null : <div>
                           <AddReviewModal
                           id={rsr.id}

@@ -17,18 +17,25 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
+const reviewsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_REVIEW':
+      return [...state, action.review]
+    default:
+      return state
+  }
+}
+
 const allUsersReducer = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_USERS':
       return action.users
     case 'ADD_RESERVATION':
-    // debugger
       const meme = state.find(x => x.id === action.reservation.pet_owner_id)
       meme.owner_reservations.push(action.reservation)
       const meh = state.filter(user=> user.id !== meme.id)
       return [...meh, meme]
     case 'DELETE_RESERVATION':
-    // debugger
       const user = state.find(x => x.id === action.reservation.pet_owner_id)
       console.log("in reducer", user.owner_reservations);
       const userUpdate = user.owner_reservations.filter(x => x.id !== action.reservation.id)
@@ -72,6 +79,12 @@ const allReservationsReducer = (state = [], action) => {
     case 'UPDATE_RESERVATION':
       const rsrs = state.filter(x => x.id !== action.reservation.id)
       return [...rsrs, action.reservation]
+    case 'ADD_REVIEW':
+      const isolate = state.find(x => x.id === action.review.reservation_id)
+      isolate.review = action.review
+      debugger
+      const otherRsrs = state.filter(x => x.id !== action.review.reservation_id )
+      return [...otherRsrs, isolate]
     default:
       return state
   }
@@ -88,14 +101,7 @@ const petsReducer = (state = [], action) => {
   }
 }
 
-const reviewsReducer = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_REVIEW':
-      return [...state, action.review]
-    default:
-      return state
-  }
-}
+
 
 const rootReducer = combineReducers({
   auth: authReducer,
