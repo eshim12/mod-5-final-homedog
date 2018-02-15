@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../../actions'
 import { connect } from 'react-redux'
-import { Message, Divider } from 'semantic-ui-react'
+import { Message, Divider, Image } from 'semantic-ui-react'
 import HostCard from '../detailCards/HostCard'
 import withAuth from '../hocs/withAuth'
 import MyMapComponent from '../MyMapComponent'
@@ -74,8 +74,8 @@ class FindSitter extends Component {
 
     return (
 
-      <div style={{paddingTop: "20px"}}className="Profile ui stackable two column grid">
-        <div className="column"><center>
+      <div className="Profile ui stackable two column grid">
+        <div style={{paddingTop:"20px"}}className="column"><center>
           <div><h1>Search for a Sitter</h1>
           <form className="ui form sitter">
             <label>Start Date</label>
@@ -103,7 +103,7 @@ class FindSitter extends Component {
       <div className="column"><center>
           {available ? <div style={{width: '100%', height: '600px', padding:"20px"}} className="column">
             <MyMapComponent users={available}/>
-          </div> : null}
+          </div> : <Image src={require("../../images/pug.jpg")}/>}
         </center></div>
       </div>
     )
