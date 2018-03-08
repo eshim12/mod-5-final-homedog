@@ -2,6 +2,7 @@
   "name": "homedog-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://eshim12.github.io/mod-5-final-homedog",
   "dependencies": {
     "google-map-react": "^0.29.0",
     "moment": "^2.20.1",
@@ -20,5 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }
