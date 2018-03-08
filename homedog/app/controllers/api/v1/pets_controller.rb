@@ -1,5 +1,5 @@
 class Api::V1::PetsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :create]
+  skip_before_action :authorized, only: [:index, :create, :show]
   def index
   pets = Pet.all
   render json: pets, status: 200
@@ -25,6 +25,7 @@ class Api::V1::PetsController < ApplicationController
   end
 
   def show
+    @pet = Pet.all.find(params[:id])
     render json: @pet, status: 200
   end
 

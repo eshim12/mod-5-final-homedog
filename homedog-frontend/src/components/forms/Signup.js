@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { adapter } from '../../services'
-import { Button, Popup, Image } from 'semantic-ui-react'
+import { Popup, Image } from 'semantic-ui-react'
 
 const Info = ({handleCheckbox}) => (
   <Popup
@@ -99,7 +99,7 @@ class Signup extends Component{
     </div> : ""
 
     return(
-      <div className="ui form signup">
+      <div className="ui form signup" style={{marginBottom: "50px"}}>
         <form onSubmit={this.handleSubmit}>
           <h2 style={{fontFamily: "Nunito, sans-serif"}}><center>Sign Up</center></h2>
           <Info handleCheckbox={this.handleCheckbox}/>

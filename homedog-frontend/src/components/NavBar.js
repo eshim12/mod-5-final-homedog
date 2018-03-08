@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Segment, Icon, Image } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 // import Homepage from './Homepage'
 import * as actions from '../actions';
 import VerticalNavBar from './VerticalNavBar'

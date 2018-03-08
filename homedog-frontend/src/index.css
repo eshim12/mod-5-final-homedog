@@ -66,6 +66,7 @@ h1 {
 .introText {
   border-radius: 25px;
   font-family: 'Nunito', sans-serif;
+  margin-bottom: 50px;
 }
 
 /*Profile Page*/
@@ -88,6 +89,10 @@ h1 {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.ui.three.cards {
+  margin-bottom: 10px;
 }
 
 /*Find Sitter Page*/

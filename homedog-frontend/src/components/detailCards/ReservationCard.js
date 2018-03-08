@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import { Button, Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import * as actions from '../../actions'
 import ConfirmDeletePopup from '../ConfirmDeletePopup'
 import PetInfoModal from '../PetInfoModal'

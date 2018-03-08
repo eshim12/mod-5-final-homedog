@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Button, Icon, Modal } from 'semantic-ui-react'
+import React from 'react'
+import { Icon, Modal } from 'semantic-ui-react'
 import PetCard from './detailCards/PetCard'
 
 const PetInfoModal = ({user}) => (

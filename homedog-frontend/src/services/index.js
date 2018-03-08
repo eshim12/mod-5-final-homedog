@@ -1,4 +1,4 @@
-const API_ROOT = `http://192.168.4.57:3000/api/v1`;
+const API_ROOT = `http://homedog-backend.herokuapp.com`;
 
 const headers = {
   'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ const getCurrentUser = () => {
 };
 
 const addUser = (data) => {
-  return fetch(`${API_ROOT}/users`, {
+  return fetch(`${API_ROOT}/api/v1/users`, {
     method: 'POST',
     headers,
     body: JSON.stringify(data) }
@@ -26,12 +26,12 @@ const addUser = (data) => {
 }
 
 const getAllUsers = () => {
-  return fetch(`${API_ROOT}/users`)
+  return fetch(`${API_ROOT}/api/v1/users`)
     .then(res => res.json())
 }
 
 const updateUser = (id, data) => {
-  return fetch(`${API_ROOT}/users/${id}`, {
+  return fetch(`${API_ROOT}/api/v1/users/${id}`, {
     method: 'PATCH',
     headers,
     body: JSON.stringify(data)
@@ -47,12 +47,12 @@ const login = data => {
 };
 
 const fetchAllReservations = () => {
-  return fetch(`${API_ROOT}/reservations`)
+  return fetch(`${API_ROOT}/api/v1/reservations`)
     .then(res => res.json())
 }
 
 const addReservation = (data) => {
-  return fetch(`${API_ROOT}/reservations`, {
+  return fetch(`${API_ROOT}/api/v1/reservations`, {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
@@ -61,14 +61,14 @@ const addReservation = (data) => {
 
 const deleteReservation = (id) => {
   const token = localStorage.getItem('token');
-  return fetch(`${API_ROOT}/reservations/${id}`, {
+  return fetch(`${API_ROOT}/api/v1/reservations/${id}`, {
     method: 'DELETE',
     headers: {headers, "Authorization": token}
   }).then(res => res.json())
 }
 
 const updateReservation = (id, data) => {
-  return fetch(`${API_ROOT}/reservations/${id}`, {
+  return fetch(`${API_ROOT}/api/v1/reservations/${id}`, {
     method: 'PATCH',
     headers,
     body: JSON.stringify(data)
@@ -76,7 +76,7 @@ const updateReservation = (id, data) => {
 }
 
 const addReview = (data) => {
-  return fetch(`${API_ROOT}/reviews`, {
+  return fetch(`${API_ROOT}/api/v1/reviews`, {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
@@ -84,7 +84,7 @@ const addReview = (data) => {
 }
 
 const addPet = (data) => {
-  return fetch(`${API_ROOT}/pets`,{
+  return fetch(`${API_ROOT}/api/v1/pets`,{
     method: 'POST',
     headers,
     body: JSON.stringify(data)
@@ -93,7 +93,7 @@ const addPet = (data) => {
 
 const deletePet = (id) => {
   const token = localStorage.getItem('token');
-  return fetch(`${API_ROOT}/pets/${id}`, {
+  return fetch(`${API_ROOT}/api/v1/pets/${id}`, {
     method: 'DELETE',
     headers: {headers, "Authorization": token}
   }).then(res => res.json())

@@ -57,7 +57,7 @@ class FindSitter extends Component {
   }
 
   render() {
-    const {allUsers, currentUser, me} = this.props
+    const {me} = this.props
     const {start_date, end_date} = this.state
     let alert;
     let available;
@@ -75,7 +75,7 @@ class FindSitter extends Component {
     return (
 
       <div className="Profile ui stackable two column grid">
-        <div style={{paddingTop:"20px"}}className="column"><center>
+        <div style={{paddingTop:"20px"}} className="column"><center>
           <div><h1>Search for a Sitter</h1>
           <form className="ui form sitter">
             <label>Start Date</label>
@@ -85,7 +85,7 @@ class FindSitter extends Component {
           </form></div>
           {alert}
           <br/>
-          <div className="ui two column centered grid"><center>
+          <div style={{marginBottom: "10px"}} className="ui two column centered grid"><center>
             {available ?  available.map((user,i) => {
               return <div className="two column centered row" style={{padding:"10px"}}>
                 <HostCard
